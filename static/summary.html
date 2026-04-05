@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Summary — Darija AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',sans-serif; background:#0a0a0f; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; }
+    .bg { position:fixed; inset:0; background:radial-gradient(ellipse at 50% 30%,#2ecc7115 0%,transparent 60%); }
+
+    header { width:100%; padding:16px 28px; background:#111118; border-bottom:1px solid #1e1e2a; display:flex; gap:12px; align-items:center; position:relative; z-index:1; }
+    .back-btn { padding:6px 14px; border:1px solid #333; border-radius:20px; color:#888; background:transparent; cursor:pointer; font-size:0.8rem; text-decoration:none; transition:all 0.2s; }
+    .back-btn:hover { border-color:#2ecc71; color:#2ecc71; }
+
+    .wrap { position:relative; z-index:1; width:100%; max-width:680px; padding:60px 24px; }
+    .trophy { text-align:center; font-size:4rem; margin-bottom:16px; animation:bounce2 0.8s ease; }
+    @keyframes bounce2 { 0%{transform:scale(0)} 70%{transform:scale(1.2)} 100%{transform:scale(1)} }
+    h1 { text-align:center; font-size:1.8rem; font-weight:800; margin-bottom:8px; }
+    h1 span { color:#2ecc71; }
+    .subtitle { text-align:center; color:#666; margin-bottom:40px; }
+
+    .summary-card {
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+      border-radius:20px; padding:36px; line-height:1.8;
+      font-size:0.95rem; color:#ccc; white-space:pre-wrap;
+    }
+    .loading-card { text-align:center; padding:60px; color:#555; }
+    .loading-card .spin { font-size:2.5rem; animation:spin 1s linear infinite; display:block; margin-bottom:12px; }
+    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+    .actions { display:flex; gap:14px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+    .action-btn { padding:13px 28px; border-radius:28px; font-family:'Poppins',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; text-decoration:none; }
+    .btn-green { background:#2ecc71; color:#000; border:none; }
+    .btn-green:hover { background:#27ae60; }
+    .btn-outline { background:transparent; color:#888; border:1px solid #444; }
+    .btn-outline:hover { border-color:#c1440e; color:#c1440e; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <header>
+    <a href="/menu" class="back-btn">← Menu</a>
+    <span style="font-size:1rem;font-weight:600;">📊 Session Summary</span>
+  </header>
+
+  <div class="wrap">
+    <div class="trophy">🏆</div>
+    <h1>Great Session, <span id="user-name">friend</span>!</h1>
+    <p class="subtitle">Here's everything you learned today in Darija 🇲🇦</p>
+
+    <div id="summary-content">
+      <div class="loading-card">
+        <span class="spin">⏳</span>
+        Your AI teacher is preparing your summary...
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="/chat" class="action-btn btn-green">Chat Again</a>
+      <a href="/quiz" class="action-btn btn-outline">Take a Quiz</a>
+      <a href="/menu" class="action-btn btn-outline">Back to Menu</a>
+    </div>
+  </div>
+
+  <script>
+    fetch('/api/me',{credentials:'include'}).then(r=>r.json()).then(d=>{
+      if(d.error){window.location.href='/login';return;}
+      document.getElementById('user-name').textContent = d.name.split(' ')[0];
+    });
+
+    const history = sessionStorage.getItem('chatHistory');
+    if (!history) {
+      document.getElementById('summary-content').innerHTML = '<p style="text-align:center;color:#555">No conversation found. <a href="/chat" style="color:#c1440e">Start chatting first!</a></p>';
+    } else {
+      fetch('/api/summary',{
+        method:'POST', credentials:'include',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({history})
+      }).then(r=>r.json()).then(data=>{
+        if(data.error){
+          document.getElementById('summary-content').innerHTML=`<p style="color:#e74c3c">${data.error}</p>`;
+        } else {
+          document.getElementById('summary-content').innerHTML=`<div class="summary-card">${data.summary}</div>`;
+          sessionStorage.removeItem('chatHistory');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

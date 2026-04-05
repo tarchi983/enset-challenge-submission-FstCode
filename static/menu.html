@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Your Mode — Darija AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Poppins',sans-serif; background:#0a0a0f; color:#fff;
+      min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    }
+    .bg {
+      position:fixed; inset:0;
+      background: radial-gradient(ellipse at 50% 30%, #c1440e15 0%, transparent 60%);
+    }
+    header {
+      width:100%; padding:20px 40px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid rgba(255,255,255,0.06); position:relative; z-index:1;
+    }
+    .logo { font-size:1.3rem; font-weight:700; color:#c1440e; }
+    .logo span { color:#fff; }
+    .user-info { font-size:0.85rem; color:#888; display:flex; align-items:center; gap:12px; }
+    .logout-btn {
+      padding:6px 16px; background:transparent;
+      border:1px solid #333; border-radius:20px;
+      color:#666; cursor:pointer; font-size:0.8rem;
+      transition:all 0.2s;
+    }
+    .logout-btn:hover { border-color:#c1440e; color:#c1440e; }
+
+    .content { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 20px; }
+
+    .greeting { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; text-align:center; margin-bottom:10px; }
+    .greeting span { color:#c1440e; }
+    .sub { color:#666; text-align:center; margin-bottom:60px; font-size:0.95rem; }
+
+    .cards { display:flex; gap:30px; flex-wrap:wrap; justify-content:center; }
+    .mode-card {
+      width:280px; background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:24px; padding:40px 32px;
+      text-align:center; cursor:pointer;
+      transition:all 0.3s; text-decoration:none; color:#fff;
+    }
+    .mode-card:hover {
+      transform:translateY(-10px);
+      border-color:rgba(193,68,14,0.5);
+      background:rgba(193,68,14,0.08);
+      box-shadow:0 20px 60px rgba(193,68,14,0.2);
+    }
+    .mode-icon { font-size:3.5rem; margin-bottom:20px; }
+    .mode-card h2 { font-size:1.3rem; margin-bottom:10px; }
+    .mode-card p { color:#777; font-size:0.88rem; line-height:1.6; }
+    .mode-badge {
+      display:inline-block; margin-top:20px;
+      padding:6px 18px; border-radius:20px;
+      background:#c1440e; font-size:0.8rem; font-weight:600;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <header>
+    <div class="logo">Darija<span>AI</span> 🇲🇦</div>
+    <div class="user-info">
+      <span id="username">...</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="content">
+    <h1 class="greeting">Merhba, <span id="greet-name">friend</span>! 👋</h1>
+    <p class="sub">What would you like to do today?</p>
+
+    <div class="cards">
+      <a href="/chat" class="mode-card">
+        <div class="mode-icon">🤖</div>
+        <h2>Chat with AI</h2>
+        <p>Have a real conversation and learn Darija naturally through questions and answers.</p>
+        <span class="mode-badge">Start Chatting →</span>
+      </a>
+      <a href="/quiz" class="mode-card">
+        <div class="mode-icon">🧠</div>
+        <h2>Take a Quiz</h2>
+        <p>Test your Darija knowledge with AI-generated multiple choice questions.</p>
+        <span class="mode-badge">Start Quiz →</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    async function logout() {
+      await fetch('/api/logout', { method:'POST', credentials:'include' });
+      window.location.href = '/';
+    }
+
+    // Load user info
+    fetch('/api/me', { credentials:'include' })
+      .then(r => r.json())
+      .then(d => {
+        if (d.error) { window.location.href = '/login'; return; }
+        const first = d.name.split(' ')[0];
+        document.getElementById('username').textContent = d.name;
+        document.getElementById('greet-name').textContent = first;
+      });
+  </script>
+</body>
+</html>

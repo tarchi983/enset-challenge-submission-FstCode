@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Darija AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Poppins',sans-serif; background:#0a0a0f; color:#fff;
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+    }
+    .bg {
+      position:fixed; inset:0;
+      background: radial-gradient(ellipse at 30% 50%, #c1440e18 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, #8e44ad18 0%, transparent 60%);
+    }
+    .card {
+      position:relative; z-index:1;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:24px; padding:48px 40px;
+      width:100%; max-width:440px;
+      backdrop-filter:blur(10px);
+    }
+    .logo { font-size:1.5rem; font-weight:700; color:#c1440e; text-align:center; margin-bottom:6px; }
+    .logo span { color:#fff; }
+    .tagline { text-align:center; color:#666; font-size:0.85rem; margin-bottom:36px; }
+
+    .tabs { display:flex; gap:0; margin-bottom:28px; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .tab {
+      flex:1; padding:12px; text-align:center; cursor:pointer;
+      color:#666; font-size:0.9rem; font-weight:600;
+      border-bottom:2px solid transparent; transition:all 0.2s;
+    }
+    .tab.active { color:#c1440e; border-bottom-color:#c1440e; }
+
+    .form { display:none; flex-direction:column; gap:16px; }
+    .form.active { display:flex; }
+
+    label { font-size:0.8rem; color:#888; margin-bottom:4px; display:block; }
+    input {
+      width:100%; padding:13px 16px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px; color:#fff;
+      font-family:'Poppins',sans-serif; font-size:0.95rem;
+      outline:none; transition:border 0.2s;
+    }
+    input:focus { border-color:#c1440e; }
+    input::placeholder { color:#444; }
+
+    .submit-btn {
+      width:100%; padding:14px;
+      background:#c1440e; color:#fff; border:none;
+      border-radius:12px; font-family:'Poppins',sans-serif;
+      font-size:1rem; font-weight:700; cursor:pointer;
+      transition:all 0.3s; margin-top:8px;
+      box-shadow:0 0 20px #c1440e44;
+    }
+    .submit-btn:hover { background:#a83a0c; box-shadow:0 0 30px #c1440e66; }
+    .submit-btn:disabled { background:#444; box-shadow:none; cursor:not-allowed; }
+
+    .error-msg {
+      color:#ff6b6b; font-size:0.82rem; text-align:center;
+      background:rgba(255,107,107,0.1); border-radius:8px;
+      padding:10px; display:none;
+    }
+    .error-msg.show { display:block; }
+
+    .back-link {
+      text-align:center; margin-top:20px;
+      font-size:0.82rem; color:#555;
+    }
+    .back-link a { color:#c1440e; text-decoration:none; }
+
+    .divider {
+      display:flex; align-items:center; gap:12px; margin:24px 0;
+      font-size:0.75rem; color:#555;
+    }
+    .divider::before, .divider::after {
+      content:''; flex:1; height:1px; background:rgba(255,255,255,0.1);
+    }
+
+    .guest-btn {
+      width:100%; padding:14px;
+      background:rgba(46,204,113,0.15);
+      border:1px solid rgba(46,204,113,0.3);
+      border-radius:12px; color:#2ecc71;
+      font-family:'Poppins',sans-serif;
+      font-size:1rem; font-weight:700; cursor:pointer;
+      transition:all 0.3s;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .guest-btn:hover {
+      background:rgba(46,204,113,0.25);
+      border-color:#2ecc71;
+      box-shadow:0 0 20px rgba(46,204,113,0.3);
+    }
+    .guest-btn:disabled { background:#444; box-shadow:none; cursor:not-allowed; color:#666; border-color:#444; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="card">
+    <div class="logo">Darija<span>AI</span> 🇲🇦</div>
+    <div class="tagline">Your Moroccan language companion</div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('login')">Login</div>
+      <div class="tab" onclick="switchTab('register')">Register</div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="form active" id="login-form">
+      <div>
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="you@example.com"/>
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="Your password"/>
+      </div>
+      <div class="error-msg" id="login-error"></div>
+      <button class="submit-btn" onclick="doLogin()">Login →</button>
+    </div>
+
+    <!-- Register Form -->
+    <div class="form" id="register-form">
+      <div>
+        <label>Full Name</label>
+        <input type="text" id="reg-name" placeholder="Your name"/>
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="you@example.com"/>
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" id="reg-pass" placeholder="Choose a password"/>
+      </div>
+      <div class="error-msg" id="reg-error"></div>
+      <button class="submit-btn" onclick="doRegister()">Create Account →</button>
+    </div>
+
+    <div class="divider">or continue</div>
+    <button class="guest-btn" onclick="doGuest()">🚀 Continue as Guest</button>
+
+    <div class="back-link"><a href="/">← Back to home</a></div>
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', (i===0&&tab==='login')||(i===1&&tab==='register')));
+      document.getElementById('login-form').classList.toggle('active', tab==='login');
+      document.getElementById('register-form').classList.toggle('active', tab==='register');
+    }
+
+    async function doLogin() {
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-pass').value.trim();
+      const errEl = document.getElementById('login-error');
+      errEl.classList.remove('show');
+
+      const res = await fetch('/api/login', {
+        method:'POST', credentials:'include',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email, password})
+      });
+      const data = await res.json();
+      if (res.ok) { window.location.href = '/menu'; }
+      else { errEl.textContent = data.error; errEl.classList.add('show'); }
+    }
+
+    async function doRegister() {
+      const name  = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-pass').value.trim();
+      const errEl = document.getElementById('reg-error');
+      errEl.classList.remove('show');
+
+      const res = await fetch('/api/register', {
+        method:'POST', credentials:'include',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({name, email, password})
+      });
+     
+
+    async function doGuest() {
+      const res = await fetch('/api/guest', {
+        method:'POST', credentials:'include',
+        headers:{'Content-Type':'application/json'}
+      });
+      if (res.ok) { window.location.href = '/menu'; }
+    } const data = await res.json();
+      if (res.ok) { window.location.href = '/menu'; }
+      else { errEl.textContent = data.error; errEl.classList.add('show'); }
+    }
+
+    // Enter key support
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        if (document.getElementById('login-form').classList.contains('active')) doLogin();
+        else doRegister();
+      }
+    });
+  </script>
+</body>
+</html>

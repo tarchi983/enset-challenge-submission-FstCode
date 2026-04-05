@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darija AI — Learn Moroccan Arabic</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',sans-serif; background:#0a0a0f; color:#fff; overflow-x:hidden; }
+
+    /* Animated background */
+    .bg {
+      position:fixed; inset:0; z-index:0;
+      background: radial-gradient(ellipse at 20% 50%, #c1440e22 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, #2ecc7122 0%, transparent 60%),
+                  radial-gradient(ellipse at 50% 80%, #8e44ad22 0%, transparent 60%);
+    }
+    .stars { position:fixed; inset:0; z-index:0; }
+    .star {
+      position:absolute; width:2px; height:2px;
+      background:#fff; border-radius:50%;
+      animation: twinkle 3s infinite alternate;
+    }
+    @keyframes twinkle { from{opacity:0.2} to{opacity:1} }
+
+    .content { position:relative; z-index:1; }
+
+    /* Nav */
+    nav {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:20px 60px;
+    }
+    .logo { font-size:1.4rem; font-weight:700; color:#c1440e; }
+    .logo span { color:#fff; }
+    .nav-btn {
+      padding:10px 28px; background:transparent;
+      border:2px solid #c1440e; border-radius:30px;
+      color:#c1440e; font-family:'Poppins',sans-serif;
+      font-weight:600; cursor:pointer; transition:all 0.3s;
+      text-decoration:none; font-size:0.9rem;
+    }
+    .nav-btn:hover { background:#c1440e; color:#fff; }
+
+    /* Hero */
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+      text-align:center; padding:40px 20px;
+    }
+    .flag-row { font-size:3rem; margin-bottom:20px; animation:float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+    h1 {
+      font-size:clamp(2.5rem, 7vw, 5rem);
+      font-weight:800; line-height:1.1;
+      background: linear-gradient(135deg, #fff 0%, #c1440e 50%, #f39c12 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text; margin-bottom:16px;
+    }
+    .subtitle {
+      font-size:clamp(1rem, 2.5vw, 1.3rem);
+      color:#aaa; max-width:600px; margin:0 auto 40px;
+      font-weight:300; line-height:1.6;
+    }
+    .darija-words {
+      display:flex; flex-wrap:wrap; gap:12px;
+      justify-content:center; margin-bottom:50px;
+    }
+    .word-badge {
+      padding:8px 20px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px; font-size:0.85rem; color:#ccc;
+      animation:fadeUp 0.6s ease forwards; opacity:0;
+    }
+    .word-badge span { color:#c1440e; font-weight:600; }
+    @keyframes fadeUp {
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .cta-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .cta-primary {
+      padding:16px 44px; background:#c1440e; color:#fff;
+      border:none; border-radius:50px; font-family:'Poppins',sans-serif;
+      font-size:1.1rem; font-weight:700; cursor:pointer;
+      transition:all 0.3s; text-decoration:none; display:inline-block;
+      box-shadow:0 0 30px #c1440e55;
+    }
+    .cta-primary:hover { transform:translateY(-3px); box-shadow:0 0 50px #c1440e99; }
+    .cta-secondary {
+      padding:16px 44px; background:transparent; color:#fff;
+      border:2px solid rgba(255,255,255,0.2); border-radius:50px;
+      font-family:'Poppins',sans-serif; font-size:1.1rem; display:inline-block;
+      font-weight:600; cursor:pointer; transition:all 0.3s;
+      text-decoration:none;
+    }
+    .cta-secondary:hover { border-color:#fff; }
+    .cta-guest {
+      padding:16px 44px; background:rgba(46,204,113,0.1); color:#2ecc71;
+      border:2px solid rgba(46,204,113,0.3); border-radius:50px;
+      font-family:'Poppins',sans-serif; font-size:1.1rem; display:inline-block;
+      font-weight:600; cursor:pointer; transition:all 0.3s;
+      text-decoration:none;
+    }
+    .cta-guest:hover { border-color:#2ecc71; background:rgba(46,204,113,0.2); }
+
+    /* Features */
+    .features {
+      padding:100px 60px; display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px;
+      max-width:1200px; margin:0 auto;
+    }
+    .feature-card {
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:20px; padding:36px 28px;
+      transition:all 0.3s; cursor:default;
+    }
+    .feature-card:hover {
+      background:rgba(193,68,14,0.08);
+      border-color:rgba(193,68,14,0.3);
+      transform:translateY(-6px);
+    }
+    .feature-icon { font-size:2.5rem; margin-bottom:16px; }
+    .feature-card h3 { font-size:1.15rem; margin-bottom:10px; font-weight:600; }
+    .feature-card p { color:#888; font-size:0.9rem; line-height:1.7; }
+
+    /* Stats */
+    .stats {
+      padding:60px; display:flex; justify-content:center;
+      gap:60px; flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+    .stat { text-align:center; }
+    .stat-number { font-size:2.5rem; font-weight:800; color:#c1440e; }
+    .stat-label { color:#666; font-size:0.85rem; margin-top:4px; }
+
+    /* Footer */
+    footer {
+      text-align:center; padding:30px;
+      color:#444; font-size:0.82rem;
+    }
+    footer span { color:#c1440e; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="stars" id="stars"></div>
+
+  <div class="content">
+    <nav>
+      <div class="logo">Darija<span>AI</span></div>
+      <a href="/login" class="nav-btn">Get Started</a>
+    </nav>
+
+    <section class="hero">
+      <div class="flag-row">🇲🇦</div>
+      <h1>Speak Moroccan<br/>Like a Local</h1>
+      <p class="subtitle">
+        Learn authentic Darija through AI-powered conversations,
+        fun quizzes, and real cultural insights.
+      </p>
+
+      <div class="darija-words">
+        <div class="word-badge" style="animation-delay:0.1s"><span>Salam</span> — Hello</div>
+        <div class="word-badge" style="animation-delay:0.2s"><span>Labas?</span> — How are you?</div>
+        <div class="word-badge" style="animation-delay:0.3s"><span>Mzyan</span> — Good</div>
+        <div class="word-badge" style="animation-delay:0.4s"><span>Wakha</span> — Okay</div>
+        <div class="word-badge" style="animation-delay:0.5s"><span>Bezzaf</span> — A lot</div>
+        <div class="word-badge" style="animation-delay:0.6s"><span>Yallah</span> — Let's go</div>
+      </div>
+
+      <div class="cta-group">
+        <a href="/login" class="cta-primary">Start Learning — Free</a>
+        <button onclick="guestAccess()" class="cta-guest">🚀 Continue as Guest</button>
+        <a href="#features" class="cta-secondary">See How It Works</a>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Darija Expressions</div></div>
+      <div class="stat"><div class="stat-number">3</div><div class="stat-label">AI Agents</div></div>
+      <div class="stat"><div class="stat-number">7</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Free to Use</div></div>
+    </div>
+
+    <section class="features" id="features">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Chat in Darija</h3>
+        <p>Ask anything and get answers in English mixed with real Moroccan Darija expressions — just like talking to a local friend.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Test Your Knowledge</h3>
+        <p>Take interactive quizzes generated by AI to test how well you know Darija words, phrases and cultural customs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Learning Summary</h3>
+        <p>At the end of each session, get a personalized summary of everything you learned — words, tips, and progress.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🍵</div>
+        <h3>Cultural Immersion</h3>
+        <p>Go beyond words — understand the culture, customs, food, and social etiquette that make Morocco unique.</p>
+      </div>
+    </section>
+
+    <footer>
+      Built with ❤️ by <span>Team DarijaAI</span> — Oussama Tarchi · Ali Zouine · Taha Rajel
+    </footer>
+  </div>
+
+  <script>
+    // Generate stars
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top  = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 3 + 's';
+      s.style.animationDuration = (2 + Math.random() * 3) + 's';
+      starsEl.appendChild(s);
+    }
+
+    async function guestAccess() {
+      const res = await fetch('/api/guest', {
+        method:'POST', credentials:'include',
+        headers:{'Content-Type':'application/json'}
+      });
+      if (res.ok) { window.location.href = '/menu'; }
+    }
+  </script>
+</body>
+</html>
