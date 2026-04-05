@@ -177,21 +177,6 @@ from crewai import Agent, LLM
 
 load_dotenv()
 
-# Load Darija knowledge base
-with open("data/darija_knowledge.json", "r", encoding="utf-8") as f:
-    DARIJA_KB = json.load(f)
-
-DARIJA_CONTEXT = f"""
-You have access to a Moroccan Darija knowledge base with these categories:
-- Greetings: {json.dumps(DARIJA_KB['greetings'], ensure_ascii=False)}
-- Expressions: {json.dumps(DARIJA_KB['expressions'], ensure_ascii=False)}
-- Food: {json.dumps(DARIJA_KB['food'], ensure_ascii=False)}
-- Slang: {json.dumps(DARIJA_KB['slang'], ensure_ascii=False)}
-- Numbers: {json.dumps(DARIJA_KB['numbers'], ensure_ascii=False)}
-- Cultural Tips: {json.dumps(DARIJA_KB['cultural_tips'], ensure_ascii=False)}
-Use this knowledge to give accurate, authentic Darija answers.
-"""
-
 llm = LLM(
     model="groq/llama-3.1-8b-instant",
     api_key=os.getenv("GROQ_API_KEY")
@@ -270,6 +255,11 @@ summary_agent = Agent(
 )'''
 
 
+
+
+
+
+
 import os
 import json
 from dotenv import load_dotenv
@@ -277,95 +267,52 @@ from crewai import Agent, LLM
 
 load_dotenv()
 
-# Load Darija knowledge base
+# Load Darija knowledge base for reference (not injected into agents to save tokens)
 with open("data/darija_knowledge.json", "r", encoding="utf-8") as f:
     DARIJA_KB = json.load(f)
 
-DARIJA_CONTEXT = f"""
-You have access to a Moroccan Darija knowledge base with these categories:
-- Greetings: {json.dumps(DARIJA_KB['greetings'], ensure_ascii=False)}
-- Expressions: {json.dumps(DARIJA_KB['expressions'], ensure_ascii=False)}
-- Food: {json.dumps(DARIJA_KB['food'], ensure_ascii=False)}
-- Slang: {json.dumps(DARIJA_KB['slang'], ensure_ascii=False)}
-- Numbers: {json.dumps(DARIJA_KB['numbers'], ensure_ascii=False)}
-- Cultural Tips: {json.dumps(DARIJA_KB['cultural_tips'], ensure_ascii=False)}
-Use this knowledge to give accurate, authentic Darija answers.
-"""
-
 llm = LLM(
-    model="groq/llama-3.1-8b-instant",
-    max_tokens=300, 
-    api_key=os.getenv("GROQ_API_KEY")
+    model="llama-3.1-8b-instant",
+    api_key=os.getenv("GROQ_API_KEY"),
+    base_url="https://api.groq.com/openai/v1"
 )
 
 # ─── Agent 1: Darija Expert ───────────────────────────────────────────────────
 darija_expert_agent = Agent(
-    role='Darija Language Expert',
-    goal=(
-        'Answer the user question in English, naturally including 3-5 real Moroccan Darija '
-        'words or expressions. After each Darija word explain it in parentheses like: '
-        'mzyan (Darija: good/nice). Be warm and friendly like a real Moroccan.'
-    ),
-    backstory=(
-        'You are a warm Moroccan who loves teaching Darija to foreigners. '
-        'You answer in English but always sprinkle in real Darija from your knowledge base. '
-        + DARIJA_CONTEXT +
-        'You have NO tools — answer purely from your knowledge.'
-    ),
+    role='Darija Expert',
+    goal='Answer briefly in English with 3-5 Darija words (explained in parentheses). Be warm.',
+    backstory='You are a native Moroccan Darija speaker. Answer from your knowledge only.',
     llm=llm,
-    verbose=True,
+    verbose=False,
     allow_delegation=False,
 )
 
 # ─── Agent 2: Cultural Coach ──────────────────────────────────────────────────
 cultural_coach_agent = Agent(
-    role='Moroccan Cultural Coach',
-    goal=(
-        'Give the user one short practical Pro Cultural Tip directly related to their question.'
-    ),
-    backstory=(
-        'You are a friendly Moroccan cultural ambassador who gives short memorable tips. '
-        + DARIJA_CONTEXT +
-        'You have NO tools.'
-    ),
+    role='Cultural Coach',
+    goal='Give one short Pro Cultural Tip (2-3 sentences) related to the user question.',
+    backstory='You are a friendly Moroccan cultural expert. Keep tips brief and practical.',
     llm=llm,
-    verbose=True,
+    verbose=False,
     allow_delegation=False,
 )
 
 # ─── Agent 3: Quiz Agent ──────────────────────────────────────────────────────
 quiz_agent = Agent(
-    role='Darija Quiz Master',
-    goal=(
-        'Create a fun multiple-choice quiz question about Moroccan Darija. '
-        'Return ONLY valid JSON in this exact format: '
-        '{"question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "answer": "A"}'
-    ),
-    backstory=(
-        'You are a fun and engaging Darija quiz master. '
-        'You create clear multiple-choice questions to test Darija knowledge. '
-        + DARIJA_CONTEXT +
-        'IMPORTANT: Always return ONLY the JSON object, nothing else. No extra text.'
-    ),
+    role='Quiz Master',
+    goal='Create ONE quiz question in JSON: {"question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "answer": "A"}',
+    backstory='You create fun Darija quiz questions. Return ONLY JSON, no extra text, only english language',
     llm=llm,
-    verbose=True,
+    verbose=False,
     allow_delegation=False,
 )
 
 # ─── Agent 4: Summary Agent ───────────────────────────────────────────────────
 summary_agent = Agent(
-    role='Learning Summary Expert',
-    goal=(
-        'Read the full conversation history and write a friendly summary of what '
-        'the user learned about Moroccan Darija during the session.'
-    ),
-    backstory=(
-        'You are an encouraging Moroccan teacher. '
-        'You review chat history and highlight the Darija words, expressions, and cultural '
-        'tips the user encountered. You make them feel proud of what they learned. '
-        'You have NO tools.'
-    ),
+    role='Summary Expert',
+    goal='Summarize (max 200 words) the Darija words and cultural tips the user learned.',
+    backstory='You highlight what the user learned and motivate them to keep learning.',
     llm=llm,
-    verbose=True,
+    verbose=False,
     allow_delegation=False,
 )

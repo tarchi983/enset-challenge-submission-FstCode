@@ -229,12 +229,29 @@
     }
 
     async function guestAccess() {
-      const res = await fetch('/api/guest', {
-        method:'POST', credentials:'include',
-        headers:{'Content-Type':'application/json'}
-      });
-      if (res.ok) { window.location.href = '/menu'; }
+      try {
+        const res = await fetch('/api/guest', {
+          method:'POST', credentials:'include',
+          headers:{'Content-Type':'application/json'}
+        });
+        if (res.ok) { 
+          window.location.href = '/menu'; 
+        } else {
+          alert('Unable to access guest mode. Please try again.');
+        }
+      } catch (e) {
+        alert('Connection error. Please try again.');
+      }
     }
+
+    // Ensure "Start Learning - Free" button works
+    document.querySelectorAll('.cta-primary').forEach(btn => {
+      if (btn.textContent.includes('Start Learning')) {
+        btn.addEventListener('click', (e) => {
+          if (!btn.href) e.preventDefault();
+        });
+      }
+    });
   </script>
 </body>
 </html>

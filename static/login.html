@@ -185,17 +185,20 @@
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify({name, email, password})
       });
-     
-
-    async function doGuest() {
-      const res = await fetch('/api/guest', {
-        method:'POST', credentials:'include',
-        headers:{'Content-Type':'application/json'}
-      });
-      if (res.ok) { window.location.href = '/menu'; }
-    } const data = await res.json();
+      const data = await res.json();
       if (res.ok) { window.location.href = '/menu'; }
       else { errEl.textContent = data.error; errEl.classList.add('show'); }
+    }
+
+    async function doGuest() {
+      try {
+        const res = await fetch('/api/guest', {
+          method:'POST', credentials:'include',
+          headers:{'Content-Type':'application/json'}
+        });
+        if (res.ok) { window.location.href = '/menu'; }
+        else { alert('Unable to access guest mode'); }
+      } catch (e) { alert('Connection error'); }
     }
 
     // Enter key support

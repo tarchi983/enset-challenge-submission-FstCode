@@ -46,12 +46,31 @@ if __name__ == "__main__":
 
 import os
 import json
+import time
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 from crewai import Crew, Process
 from agents import darija_expert_agent, cultural_coach_agent, quiz_agent, summary_agent
 from tasks import create_chat_tasks, create_quiz_task, create_summary_task
 from functools import wraps
+
+
+# ─── Retry Helper for Rate Limits ─────────────────────────────────────────────
+def run_crew_with_retry(crew, max_retries=2, base_delay=0.5):
+    """Execute crew.kickoff() with minimal retry for rate limits (optimized)."""
+    for attempt in range(max_retries):
+        try:
+            return crew.kickoff()
+        except Exception as e:
+            error_msg = str(e).lower()
+            if "rate limit" in error_msg or "429" in error_msg:
+                if attempt < max_retries - 1:
+                    # Much shorter waits since we reduced token usage dramatically
+                    wait_time = base_delay * (attempt + 1)
+                    print(f"Rate limit hit. Retrying in {wait_time}s... (Attempt {attempt + 1}/{max_retries})")
+                    time.sleep(wait_time)
+                    continue
+            raise  # Re-raise if not a rate limit error or max retries reached
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
@@ -162,7 +181,7 @@ def chat():
             process=Process.sequential,
             verbose=False,
         )
-        result = crew.kickoff()
+        result = run_crew_with_retry(crew)
         return jsonify({"response": str(result)})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -183,7 +202,7 @@ def quiz():
             process=Process.sequential,
             verbose=False,
         )
-        result = str(crew.kickoff()).strip()
+        result = str(run_crew_with_retry(crew)).strip()
 
         # Clean and parse JSON
         if "```" in result:
@@ -215,7 +234,7 @@ def summary():
             process=Process.sequential,
             verbose=False,
         )
-        result = crew.kickoff()
+        result = run_crew_with_retry(crew)
         return jsonify({"summary": str(result)})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
