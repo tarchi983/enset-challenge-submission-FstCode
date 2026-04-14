@@ -16,60 +16,8 @@ the right syntax for darija : chcp 65001
 GROQ_API_KEY=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
 
 
+bach t9ad fichier fih ga3 libraries li mst3ml : pip freeze > requirements.txt
 
-
-{
-  "greetings": [
-    {"darija": "Salam", "arabic": "سلام", "english": "Hello / Peace", "usage": "Most common greeting between everyone"},
-    {"darija": "Labas", "arabic": "لاباس", "english": "Are you okay? / Fine", "usage": "Response to 'how are you' — very common"},
-    {"darija": "Kif dayr / Kif dayra", "arabic": "كيف داير / كيف دايرة", "english": "How are you? (m/f)", "usage": "Casual greeting between friends"},
-    {"darija": "Merhba", "arabic": "مرحبا", "english": "Welcome", "usage": "Said to welcome guests or strangers"},
-    {"darija": "Bslama", "arabic": "بسلامة", "english": "Goodbye (go in peace)", "usage": "Said when someone is leaving"},
-    {"darija": "Sbah lkhir", "arabic": "صباح الخير", "english": "Good morning", "usage": "Morning greeting"},
-    {"darija": "Msa lkhir", "arabic": "مسا الخير", "english": "Good evening", "usage": "Evening greeting"}
-  ],
-  "expressions": [
-    {"darija": "Wakha", "arabic": "واخا", "english": "Okay / Alright", "usage": "Agreement or acceptance"},
-    {"darija": "Mzyan", "arabic": "مزيان", "english": "Good / Nice", "usage": "Compliment or approval"},
-    {"darija": "Bezzaf", "arabic": "بزاف", "english": "A lot / Too much", "usage": "Quantity or intensity"},
-    {"darija": "Shwiya", "arabic": "شوية", "english": "A little / A bit", "usage": "Small amount"},
-    {"darija": "Daba", "arabic": "دابا", "english": "Now / Right now", "usage": "Indicates immediacy"},
-    {"darija": "Ghir", "arabic": "غير", "english": "Just / Only", "usage": "Restriction or simplification"},
-    {"darija": "Walu", "arabic": "والو", "english": "Nothing", "usage": "Expressing emptiness or nothing"},
-    {"darija": "Bhal bhal", "arabic": "بحال بحال", "english": "Same same / Equal", "usage": "Things are the same"},
-    {"darija": "Yallah", "arabic": "يالله", "english": "Let's go / Come on", "usage": "Encouragement to move or start"}
-  ],
-  "food": [
-    {"darija": "Tagine", "arabic": "طاجين", "english": "Slow-cooked stew", "usage": "Most famous Moroccan dish"},
-    {"darija": "Couscous", "arabic": "كسكس", "english": "Steamed semolina dish", "usage": "Traditional Friday family meal"},
-    {"darija": "Atay", "arabic": "أتاي", "english": "Moroccan mint tea", "usage": "Symbol of hospitality"},
-    {"darija": "Khobz", "arabic": "خبز", "english": "Bread", "usage": "Eaten with every meal"},
-    {"darija": "Bissara", "arabic": "بيصارة", "english": "Fava bean soup", "usage": "Popular street food breakfast"},
-    {"darija": "Msemen", "arabic": "مسمن", "english": "Layered flatbread", "usage": "Common breakfast item"}
-  ],
-  "slang": [
-    {"darija": "Zwina / Zwine", "arabic": "زوينة / زوين", "english": "Beautiful / Pretty (f/m)", "usage": "Complimenting appearance"},
-    {"darija": "Khouya", "arabic": "خويا", "english": "My brother / Bro", "usage": "Friendly address between males"},
-    {"darija": "Lhwa", "arabic": "الهوى", "english": "Love / Passion", "usage": "Romantic or passionate feeling"},
-    {"darija": "3aycheen", "arabic": "عايشين", "english": "We're living / We're alive", "usage": "Expression of surviving or doing okay"},
-    {"darija": "Nta/Nti", "arabic": "نت / نتي", "english": "You (m/f)", "usage": "Second person address"},
-    {"darija": "Ana", "arabic": "أنا", "english": "I / Me", "usage": "First person"},
-    {"darija": "Hna", "arabic": "حنا", "english": "We / Us", "usage": "First person plural"}
-  ],
-  "numbers": [
-    {"darija": "Wahed", "arabic": "واحد", "english": "One", "usage": "Counting"},
-    {"darija": "Juj", "arabic": "جوج", "english": "Two", "usage": "Counting"},
-    {"darija": "Tlata", "arabic": "تلاتة", "english": "Three", "usage": "Counting"},
-    {"darija": "Rb3a", "arabic": "ربعة", "english": "Four", "usage": "Counting"},
-    {"darija": "Khamsa", "arabic": "خمسة", "english": "Five", "usage": "Counting"}
-  ],
-  "cultural_tips": [
-    "Always greet with 'Salam' when entering a room — it's considered rude not to.",
-    "Refusing tea (Atay) when offered is impolite — always accept at least one glass.",
-    "Use your right hand when eating or handing things — the left is considered unclean.",
-    "Dress modestly when visiting mosques or rural areas out of respect.",
-    "Bargaining (negotiating price) in souks is expected and part of the culture.",
-    "Friday is the holy day — many businesses close for midday prayers.",
-    "Hospitality is sacred in Morocco — guests are treated like royalty."
-  ]
-}
+bach tzid dakchi li dblti f lcode hta f github : git add file_name 
+                                                 git commit -m " dakchi li zdti bkhtisar " 
+                                                 git push origin main

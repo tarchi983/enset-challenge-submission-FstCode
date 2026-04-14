@@ -50,6 +50,13 @@
     .topics { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:30px; }
     .topic-btn { padding:7px 16px; background:#16161f; border:1px solid #2a2a3a; border-radius:20px; color:#aaa; font-size:0.8rem; cursor:pointer; transition:all 0.2s; }
     .topic-btn:hover, .topic-btn.active { border-color:#c1440e; color:#c1440e; }
+
+    .final-score { text-align:center; padding:40px 20px; }
+    .final-score-icon { font-size:4rem; margin-bottom:20px; }
+    .final-score-text { font-size:2.5rem; font-weight:700; color:#c1440e; margin-bottom:10px; }
+    .final-score-label { font-size:1rem; color:#aaa; margin-bottom:30px; }
+    .restart-btn { padding:14px 40px; background:#c1440e; color:#fff; border:none; border-radius:28px; font-family:'Poppins',sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s; margin-top:20px; }
+    .restart-btn:hover { background:#a83a0c; }
   </style>
 </head>
 <body>
@@ -142,7 +149,27 @@
       document.getElementById('next-btn').style.display='block';
     }
 
-    function nextQuestion() { qNum++; loadQuestion(); }
+    function nextQuestion() { 
+      qNum++; 
+      if (qNum > 7) {
+        showFinalScore();
+      } else {
+        loadQuestion();
+      }
+    }
+
+    function showFinalScore() {
+      document.getElementById('quiz-content').innerHTML = `
+        <div class="final-score">
+          <div class="final-score-icon">🎉</div>
+          <div class="final-score-text">${score}/7</div>
+          <div class="final-score-label">Quiz Complete!</div>
+          <button class="restart-btn" onclick="location.href='/quiz'">Take Quiz Again</button>
+        </div>
+      `;
+      document.getElementById('q-num').textContent = score;
+    }
+
     function showError(msg) { document.getElementById('quiz-content').innerHTML = `<p style="color:#e74c3c;text-align:center">${msg}</p>`; }
 
     // Auth check & initial load

@@ -55,6 +55,15 @@ from tasks import create_chat_tasks, create_quiz_task, create_summary_task
 from functools import wraps
 
 
+# ─── Step Counter ─────────────────────────────────────────────────────────────
+_step_counter = 0
+def log_step(message):
+    """Log a numbered step to terminal"""
+    global _step_counter
+    _step_counter += 1
+    print(f"\n  ► STEP {_step_counter}: {message}")
+
+
 # ─── Retry Helper for Rate Limits ─────────────────────────────────────────────
 def run_crew_with_retry(crew, max_retries=2, base_delay=0.5):
     """Execute crew.kickoff() with minimal retry for rate limits (optimized)."""
@@ -100,6 +109,7 @@ def login_required(f):
 # ─── Auth Routes ──────────────────────────────────────────────────────────────
 @app.route("/api/login", methods=["POST"])
 def login():
+    log_step("User attempting to login")
     data = request.get_json()
     email = data.get("email", "").strip().lower()
     password = data.get("password", "").strip()
@@ -109,24 +119,29 @@ def login():
                  if u["email"].lower() == email and u["password"] == password), None)
 
     if not user:
+        log_step("Login failed - Invalid credentials")
         return jsonify({"error": "Invalid email or password"}), 401
 
     session["user"] = {"id": user["id"], "name": user["name"], "email": user["email"]}
+    log_step(f"Login successful for user: {user['name']}")
     return jsonify({"message": "Login successful", "name": user["name"]})
 
 
 @app.route("/api/register", methods=["POST"])
 def register():
+    log_step("User attempting to register")
     data = request.get_json()
     name = data.get("name", "").strip()
     email = data.get("email", "").strip().lower()
     password = data.get("password", "").strip()
 
     if not name or not email or not password:
+        log_step("Registration failed - Missing fields")
         return jsonify({"error": "All fields are required"}), 400
 
     users = load_users()
     if any(u["email"].lower() == email for u in users["users"]):
+        log_step("Registration failed - Email already exists")
         return jsonify({"error": "Email already registered"}), 409
 
     new_user = {
@@ -139,11 +154,13 @@ def register():
     save_users(users)
 
     session["user"] = {"id": new_user["id"], "name": name, "email": email}
+    log_step(f"Registration successful for new user: {name}")
     return jsonify({"message": "Registered successfully", "name": name})
 
 
 @app.route("/api/logout", methods=["POST"])
 def logout():
+    log_step("User logging out")
     session.clear()
     return jsonify({"message": "Logged out"})
 
@@ -151,7 +168,9 @@ def logout():
 @app.route("/api/me")
 def me():
     if "user" in session:
+        log_step(f"User session check: {session['user']['name']}")
         return jsonify(session["user"])
+    log_step("User session check: Not logged in")
     return jsonify({"error": "Not logged in"}), 401
 
 
@@ -159,8 +178,10 @@ def me():
 @app.route("/api/guest", methods=["POST"])
 def guest_access():
     """Allow guest access without authentication"""
+    log_step("Guest access requested")
     # Simply allow guest to proceed to menu
     session["user"] = {"id": "guest", "name": "Guest", "email": "guest@darija.ai"}
+    log_step("Guest access granted")
     return jsonify({"message": "Guest access granted"})
 
 
@@ -168,22 +189,29 @@ def guest_access():
 @app.route("/api/chat", methods=["POST"])
 @login_required
 def chat():
+    log_step("Chat request received")
     data = request.get_json()
     message = data.get("message", "").strip()
     if not message:
+        log_step("Chat failed - Empty message")
         return jsonify({"error": "Empty message"}), 400
 
     try:
+        log_step("Creating chat tasks...")
         answer_task, tip_task = create_chat_tasks(message)
+        log_step("Building crew with agents...")
         crew = Crew(
             agents=[darija_expert_agent, cultural_coach_agent],
             tasks=[answer_task, tip_task],
             process=Process.sequential,
             verbose=False,
         )
+        log_step("Executing crew to generate response...")
         result = run_crew_with_retry(crew)
+        log_step("Chat response generated successfully")
         return jsonify({"response": str(result)})
     except Exception as e:
+        log_step(f"Chat failed with error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 
@@ -191,17 +219,22 @@ def chat():
 @app.route("/api/quiz", methods=["POST"])
 @login_required
 def quiz():
+    log_step("Quiz request received")
     data = request.get_json()
     topic = data.get("topic", "general Darija expressions")
+    log_step(f"Generating quiz question for topic: {topic}")
 
     try:
+        log_step("Creating quiz task...")
         task = create_quiz_task(topic)
+        log_step("Building quiz crew...")
         crew = Crew(
             agents=[quiz_agent],
             tasks=[task],
             process=Process.sequential,
             verbose=False,
         )
+        log_step("Executing quiz crew...")
         result = str(run_crew_with_retry(crew)).strip()
 
         # Clean and parse JSON
@@ -212,8 +245,10 @@ def quiz():
         result = result.strip()
 
         quiz_data = json.loads(result)
+        log_step("Quiz question generated successfully")
         return jsonify(quiz_data)
     except Exception as e:
+        log_step(f"Quiz failed with error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 
@@ -221,50 +256,72 @@ def quiz():
 @app.route("/api/summary", methods=["POST"])
 @login_required
 def summary():
+    log_step("Summary request received")
     data = request.get_json()
     history = data.get("history", "")
     if not history:
+        log_step("Summary failed - No conversation history")
         return jsonify({"error": "No conversation history provided"}), 400
 
     try:
+        log_step("Creating summary task...")
         task = create_summary_task(history)
+        log_step("Building summary crew...")
         crew = Crew(
             agents=[summary_agent],
             tasks=[task],
             process=Process.sequential,
             verbose=False,
         )
+        log_step("Generating summary...")
         result = run_crew_with_retry(crew)
+        log_step("Summary generated successfully")
         return jsonify({"summary": str(result)})
     except Exception as e:
+        log_step(f"Summary failed with error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 
 # ─── Page Routes ──────────────────────────────────────────────────────────────
 @app.route("/")
 def landing():
+    log_step("Accessing landing page")
     return app.send_static_file("index.html")
 
 @app.route("/login")
 def login_page():
+    log_step("Accessing login page")
     return app.send_static_file("login.html")
 
 @app.route("/menu")
 def menu_page():
+    log_step("Accessing menu page")
     return app.send_static_file("menu.html")
 
 @app.route("/chat")
 def chat_page():
+    log_step("Accessing chat page")
     return app.send_static_file("chat.html")
 
 @app.route("/quiz")
 def quiz_page():
+    log_step("Accessing quiz page")
     return app.send_static_file("quiz.html")
 
 @app.route("/summary")
 def summary_page():
+    log_step("Accessing summary page")
     return app.send_static_file("summary.html")
 
 
 if __name__ == "__main__":
+    print("\n" + "="*60)
+    print("🚀 STARTING DARIJA AI APPLICATION")
+    print("="*60)
+    log_step("Flask app initialization starting...")
+    log_step("Loading configuration and agents...")
+    log_step("Setting up CORS and session management...")
+    print("\n" + "="*60)
+    print(f"✓ Server running on: http://localhost:5000")
+    print("="*60 + "\n")
     app.run(debug=True, port=5000)
