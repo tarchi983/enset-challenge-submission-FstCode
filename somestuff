@@ -18,6 +18,8 @@ GROQ_API_KEY=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
 
 bach t9ad fichier fih ga3 libraries li mst3ml : pip freeze > requirements.txt
 
-bach tzid dakchi li dblti f lcode hta f github : git add file_name 
+bach tzid dakchi li dblti f lcode hta f github : git add file_name    or giy add . 
                                                  git commit -m " dakchi li zdti bkhtisar " 
                                                  git push origin main
+
+for hosting : render.com(with card)  , koyeb.com(with card) , Hugging Face(without card) password : Ana20242025!

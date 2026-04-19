@@ -1,3 +1,12 @@
+---
+title: Darija AI
+emoji: 🇲🇦
+colorFrom: red
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # 🇲🇦 Darija AI Immersion System
 
 An AI-powered web app that teaches Moroccan Darija through real conversations, quizzes, and cultural insights.
