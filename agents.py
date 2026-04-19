@@ -261,27 +261,70 @@ summary_agent = Agent(
 
 
 import os
+import re
 import json
 from dotenv import load_dotenv
 from crewai import Agent, LLM
 
 load_dotenv()
 
-# Load Darija knowledge base for reference (not injected into agents to save tokens)
+# ─── Load Darija Knowledge Base ───────────────────────────────────────────────
 with open("data/darija_knowledge.json", "r", encoding="utf-8") as f:
     DARIJA_KB = json.load(f)
 
+# Build a flat lookup list from ALL categories for fast search
+_ALL_ENTRIES = []
+for _cat, _items in DARIJA_KB.items():
+    if isinstance(_items, list):
+        for _item in _items:
+            if isinstance(_item, dict) and "darija" in _item:
+                _item["_category"] = _cat
+                _ALL_ENTRIES.append(_item)
+
+def lookup_darija(query: str) -> str:
+    """
+    Search darija_knowledge.json for any entry matching the query word.
+    Returns a formatted block of verified data to inject into the task prompt,
+    preventing the LLM from hallucinating the meaning.
+    Returns empty string if no match found.
+    """
+    q = query.strip().lower()
+    # Strip common question prefixes so "what is the meaning of Ssehd" -> "ssehd"
+    q = re.sub(
+        r"^(what'?s?|what is|what does|how do you say|translate|define|"
+        r"meaning of|the meaning of|translation of|explanation of)\s+",
+        "", q, flags=re.IGNORECASE
+    ).strip().strip("\"'")
+
+    matches = []
+    for entry in _ALL_ENTRIES:
+        variants = [v.strip().lower() for v in entry["darija"].split("/")]
+        if any(q == v or q in v or v in q for v in variants):
+            matches.append(entry)
+
+    if not matches:
+        return ""
+
+    # Cap at 1 best match to keep prompt tokens minimal
+    m = matches[0]
+    return f"  - '{m['darija']}' = '{m['english']}'"
+
+
+
 llm = LLM(
-    model="llama-3.1-8b-instant",
-    api_key=os.getenv("GROQ_API_KEY"),
-    base_url="https://api.groq.com/openai/v1"
+    model="openrouter/google/gemma-4-31b-it",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1"
 )
 
 # ─── Agent 1: Darija Expert ───────────────────────────────────────────────────
 darija_expert_agent = Agent(
     role='Darija Expert',
-    goal='Answer briefly in English with 3-5 Darija words (explained in parentheses). Be warm.',
-    backstory='You are a native Moroccan Darija speaker. Answer from your knowledge only.',
+    goal='Answer questions about Moroccan Darija accurately. Use KB data when provided.',
+    backstory=(
+        'Moroccan Darija expert. When KB data is in the task, use it exactly — never override it. '
+        'Weave real Darija words naturally into your English answers.'
+    ),
     llm=llm,
     verbose=False,
     allow_delegation=False,
@@ -289,9 +332,9 @@ darija_expert_agent = Agent(
 
 # ─── Agent 2: Cultural Coach ──────────────────────────────────────────────────
 cultural_coach_agent = Agent(
-    role='Cultural Coach',
-    goal='Give one short Pro Cultural Tip (2-3 sentences) related to the user question.',
-    backstory='You are a friendly Moroccan cultural expert. Keep tips brief and practical.',
+    role='Moroccan Cultural Coach',
+    goal='Give one short practical cultural tip about Morocco.',
+    backstory='Friendly Moroccan cultural guide. Keep tips brief and practical.',
     llm=llm,
     verbose=False,
     allow_delegation=False,
@@ -299,9 +342,9 @@ cultural_coach_agent = Agent(
 
 # ─── Agent 3: Quiz Agent ──────────────────────────────────────────────────────
 quiz_agent = Agent(
-    role='Quiz Master',
-    goal='Create ONE quiz question in JSON: {"question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "answer": "A"}',
-    backstory='You create fun Darija quiz questions. Return ONLY JSON, no extra text, only english language',
+    role='Darija Quiz Master',
+    goal='Return ONE quiz question as valid JSON only.',
+    backstory='Darija quiz creator. Return only valid JSON, no extra text.',
     llm=llm,
     verbose=False,
     allow_delegation=False,
@@ -309,10 +352,11 @@ quiz_agent = Agent(
 
 # ─── Agent 4: Summary Agent ───────────────────────────────────────────────────
 summary_agent = Agent(
-    role='Summary Expert',
-    goal='Summarize (max 200 words) the Darija words and cultural tips the user learned.',
-    backstory='You highlight what the user learned and motivate them to keep learning.',
+    role='Learning Summary Expert',
+    goal='Summarize (max 200 words) what the user learned about Darija.',
+    backstory='Encouraging Moroccan teacher who summarizes learning sessions warmly.',
     llm=llm,
     verbose=False,
     allow_delegation=False,
 )
+

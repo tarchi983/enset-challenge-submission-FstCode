@@ -4,3 +4,7 @@ crewai
 groq
 python-dotenv
 gunicorn
+pymongo[srv]
+dnspython
+google-auth
+bleach

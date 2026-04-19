@@ -345,7 +345,14 @@
     function endSession() {
       if (history.length === 0) { alert('Start a conversation first!'); return; }
       saveConversation();
-      sessionStorage.setItem('chatHistory', history.join('\n'));
+      // Trim history: user questions + short AI response excerpts only
+      const trimmed = history.map(line => {
+        if (line.startsWith('Expert:')) {
+          return 'Expert: ' + line.substring(8, 108).trim() + (line.length > 108 ? '...' : '');
+        }
+        return line;
+      });
+      sessionStorage.setItem('chatHistory', trimmed.join('\n'));
       window.location.href = '/summary';
     }
 

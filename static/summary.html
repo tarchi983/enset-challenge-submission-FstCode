@@ -53,7 +53,7 @@
     <div id="summary-content">
       <div class="loading-card">
         <span class="spin">⏳</span>
-        Your AI teacher is preparing your summary...
+        Generating your summary...
       </div>
     </div>
 
@@ -74,17 +74,29 @@
     if (!history) {
       document.getElementById('summary-content').innerHTML = '<p style="text-align:center;color:#555">No conversation found. <a href="/chat" style="color:#c1440e">Start chatting first!</a></p>';
     } else {
+      // Timeout controller — abort if taking longer than 20s
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+
       fetch('/api/summary',{
         method:'POST', credentials:'include',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({history})
+        body: JSON.stringify({history}),
+        signal: controller.signal
       }).then(r=>r.json()).then(data=>{
+        clearTimeout(timeout);
         if(data.error){
           document.getElementById('summary-content').innerHTML=`<p style="color:#e74c3c">${data.error}</p>`;
         } else {
           document.getElementById('summary-content').innerHTML=`<div class="summary-card">${data.summary}</div>`;
           sessionStorage.removeItem('chatHistory');
         }
+      }).catch(err=>{
+        clearTimeout(timeout);
+        const msg = err.name === 'AbortError'
+          ? '⏱️ Summary timed out. Please try again.'
+          : '⚠️ Could not load summary. Please try again.';
+        document.getElementById('summary-content').innerHTML=`<p style="color:#e74c3c;text-align:center">${msg}</p>`;
       });
     }
   </script>

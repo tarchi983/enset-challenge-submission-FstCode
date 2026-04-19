@@ -89,12 +89,31 @@
   </div>
 
   <script>
-    let score = 0, qNum = 1, currentTopic = 'general Darija expressions', correctAnswer = '';
+    // Per-topic state: each topic keeps its own score and question counter
+    const topicScores = {};
+    const topicQNums  = {};
+    let currentTopic  = 'general Darija expressions';
+    let correctAnswer = '';
+
+    // Helper: get or initialise state for the current topic
+    function getScore()  { return topicScores[currentTopic] || 0; }
+    function getQNum()   { return topicQNums[currentTopic]  || 1; }
+    function setScore(v) { topicScores[currentTopic] = v; }
+    function setQNum(v)  { topicQNums[currentTopic]  = v; }
+
+    // Refresh the top score-bar with current topic values
+    function refreshBar() {
+      document.getElementById('score').textContent = getScore();
+      document.getElementById('q-num').textContent = getQNum();
+    }
 
     function setTopic(btn, topic) {
-      document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentTopic = topic;
+      // Don't carry over question number — each topic starts from Q1
+      if (!topicQNums[currentTopic]) topicQNums[currentTopic] = 1;
+      refreshBar();
       loadQuestion();
     }
 
@@ -113,15 +132,22 @@
     }
 
     function renderQuestion(data) {
-      correctAnswer = data.answer;
-      document.getElementById('q-num').textContent = qNum;
+      // Normalize the correct answer to a single uppercase letter
+      correctAnswer = (data.answer || '').toString().trim().toUpperCase().charAt(0);
+      refreshBar();
       document.getElementById('quiz-content').innerHTML = `
         <div class="question-card">
-          <div class="q-num">Question ${qNum}</div>
+          <div class="q-num">Question ${getQNum()}</div>
           <div class="q-text">${data.question}</div>
         </div>
         <div class="options">
-          ${data.options.map((o,i)=>`<button class="option-btn" onclick="checkAnswer(this,'${String.fromCharCode(65+i)}')">${o}</button>`).join('')}
+          ${data.options.map((o, i) => {
+            // Extract option letter from text (e.g. "A) Salam" → "A")
+            // Fall back to position index if not present
+            const match = o.match(/^([A-Da-d])[).\s]/);
+            const letter = match ? match[1].toUpperCase() : String.fromCharCode(65 + i);
+            return `<button class="option-btn" onclick="checkAnswer(this,'${letter}')">${o}</button>`;
+          }).join('')}
         </div>
         <div class="feedback" id="feedback"></div>
         <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question →</button>
@@ -129,29 +155,33 @@
     }
 
     function checkAnswer(btn, letter) {
-      document.querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+      document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
       const fb = document.getElementById('feedback');
+
       if (letter === correctAnswer) {
         btn.classList.add('correct');
         fb.textContent = '✅ Correct! Mzyan bezzaf! (Very good!)';
         fb.className = 'feedback correct';
-        score++; document.getElementById('score').textContent = score;
+        setScore(getScore() + 1);
+        document.getElementById('score').textContent = getScore();
       } else {
         btn.classList.add('wrong');
         fb.textContent = `❌ Not quite. The correct answer was ${correctAnswer}.`;
         fb.className = 'feedback wrong';
-        // Highlight correct
-        document.querySelectorAll('.option-btn').forEach(b=>{
-          if(b.textContent.startsWith(correctAnswer)) b.classList.add('correct');
+        // Highlight the correct option button
+        document.querySelectorAll('.option-btn').forEach(b => {
+          const m = b.textContent.trim().match(/^([A-Da-d])[).\s]/);
+          const btnLetter = m ? m[1].toUpperCase() : '';
+          if (btnLetter === correctAnswer) b.classList.add('correct');
         });
       }
-      fb.style.display='block';
-      document.getElementById('next-btn').style.display='block';
+      fb.style.display = 'block';
+      document.getElementById('next-btn').style.display = 'block';
     }
 
-    function nextQuestion() { 
-      qNum++; 
-      if (qNum > 7) {
+    function nextQuestion() {
+      setQNum(getQNum() + 1);
+      if (getQNum() > 7) {
         showFinalScore();
       } else {
         loadQuestion();
@@ -159,21 +189,32 @@
     }
 
     function showFinalScore() {
+      const finalScore = getScore();
       document.getElementById('quiz-content').innerHTML = `
         <div class="final-score">
           <div class="final-score-icon">🎉</div>
-          <div class="final-score-text">${score}/7</div>
-          <div class="final-score-label">Quiz Complete!</div>
-          <button class="restart-btn" onclick="location.href='/quiz'">Take Quiz Again</button>
+          <div class="final-score-text">${finalScore}/7</div>
+          <div class="final-score-label">Quiz Complete! (${currentTopic})</div>
+          <button class="restart-btn" onclick="restartTopic()">Try Again</button>
         </div>
       `;
-      document.getElementById('q-num').textContent = score;
+      document.getElementById('q-num').textContent = finalScore;
+    }
+
+    function restartTopic() {
+      // Reset only the current topic's state, leave others intact
+      topicScores[currentTopic] = 0;
+      topicQNums[currentTopic]  = 1;
+      refreshBar();
+      loadQuestion();
     }
 
     function showError(msg) { document.getElementById('quiz-content').innerHTML = `<p style="color:#e74c3c;text-align:center">${msg}</p>`; }
 
     // Auth check & initial load
     fetch('/api/me',{credentials:'include'}).then(r=>r.json()).then(d=>{ if(d.error) window.location.href='/login'; });
+    topicQNums[currentTopic] = 1;
+    refreshBar();
     loadQuestion();
   </script>
 </body>

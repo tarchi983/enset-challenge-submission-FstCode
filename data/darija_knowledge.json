@@ -1,55 +1,1376 @@
 {
-  "greetings": [
-    {"darija": "Salam", "arabic": "سلام", "english": "Hello / Peace", "usage": "Most common greeting between everyone"},
-    {"darija": "Labas", "arabic": "لاباس", "english": "Are you okay? / Fine", "usage": "Response to 'how are you' — very common"},
-    {"darija": "Kif dayr / Kif dayra", "arabic": "كيف داير / كيف دايرة", "english": "How are you? (m/f)", "usage": "Casual greeting between friends"},
-    {"darija": "Merhba", "arabic": "مرحبا", "english": "Welcome", "usage": "Said to welcome guests or strangers"},
-    {"darija": "Bslama", "arabic": "بسلامة", "english": "Goodbye (go in peace)", "usage": "Said when someone is leaving"},
-    {"darija": "Sbah lkhir", "arabic": "صباح الخير", "english": "Good morning", "usage": "Morning greeting"},
-    {"darija": "Msa lkhir", "arabic": "مسا الخير", "english": "Good evening", "usage": "Evening greeting"}
+  "greetings_and_politeness": [
+    {
+      "darija": "Salam",
+      "arabic": "سلام",
+      "english": "Hello / Peace",
+      "usage": "Most common greeting"
+    },
+    {
+      "darija": "Labas?",
+      "arabic": "لاباس؟",
+      "english": "Are you okay? / Fine?",
+      "usage": "Common check-in"
+    },
+    {
+      "darija": "Kif dayr? / Kif dayra?",
+      "arabic": "كيف داير؟ / كيف دايرة؟",
+      "english": "How are you? (m/f)",
+      "usage": "Casual greeting"
+    },
+    {
+      "darija": "Ash khbarek?",
+      "arabic": "أش خبارك؟",
+      "english": "What's your news?",
+      "usage": "Asking about someone's life"
+    },
+    {
+      "darija": "Kulshi bikhir?",
+      "arabic": "كلشي بخير؟",
+      "english": "Is everything good?",
+      "usage": "General well-being question"
+    },
+    {
+      "darija": "Merhba",
+      "arabic": "مرحبا",
+      "english": "Welcome",
+      "usage": "Welcoming guests"
+    },
+    {
+      "darija": "Sbah lkhir",
+      "arabic": "صباح الخير",
+      "english": "Good morning",
+      "usage": "Morning greeting"
+    },
+    {
+      "darija": "Msa lkhir",
+      "arabic": "مسا الخير",
+      "english": "Good evening",
+      "usage": "Evening greeting"
+    },
+    {
+      "darija": "Tsbah 3la khir",
+      "arabic": "تصبح على خير",
+      "english": "Good night",
+      "usage": "Said before sleeping"
+    },
+    {
+      "darija": "Bslama",
+      "arabic": "بسلامة",
+      "english": "Goodbye",
+      "usage": "Parting"
+    },
+    {
+      "darija": "Thalla frasek",
+      "arabic": "تهلا فراسك",
+      "english": "Take care of yourself",
+      "usage": "Warm goodbye"
+    },
+    {
+      "darija": "Chokran",
+      "arabic": "شكرا",
+      "english": "Thank you",
+      "usage": "Expressing gratitude"
+    },
+    {
+      "darija": "Chokran bezzaf",
+      "arabic": "شكرا بزاف",
+      "english": "Thank you very much",
+      "usage": "Deep gratitude"
+    },
+    {
+      "darija": "La chokran 3la wajib",
+      "arabic": "لا شكرا على واجب",
+      "english": "You're welcome",
+      "usage": "Formal response to thank you"
+    },
+    {
+      "darija": "Hanya",
+      "arabic": "هانيا",
+      "english": "No worries / It's cool",
+      "usage": "Casual response to thank you or sorry"
+    },
+    {
+      "darija": "Smeh li / Smehi li",
+      "arabic": "سمح لي / سمحي لي",
+      "english": "Excuse me / Sorry (m/f)",
+      "usage": "Apologizing"
+    },
+    {
+      "darija": "3afak",
+      "arabic": "عفاك",
+      "english": "Please",
+      "usage": "Making a request"
+    },
+    {
+      "darija": "Mabrouk",
+      "arabic": "مبروك",
+      "english": "Congratulations",
+      "usage": "Celebrating success or holidays"
+    }
   ],
-  "expressions": [
-    {"darija": "Wakha", "arabic": "واخا", "english": "Okay / Alright", "usage": "Agreement or acceptance"},
-    {"darija": "Mzyan", "arabic": "مزيان", "english": "Good / Nice", "usage": "Compliment or approval"},
-    {"darija": "Bezzaf", "arabic": "بزاف", "english": "A lot / Too much", "usage": "Quantity or intensity"},
-    {"darija": "Shwiya", "arabic": "شوية", "english": "A little / A bit", "usage": "Small amount"},
-    {"darija": "Daba", "arabic": "دابا", "english": "Now / Right now", "usage": "Indicates immediacy"},
-    {"darija": "Ghir", "arabic": "غير", "english": "Just / Only", "usage": "Restriction or simplification"},
-    {"darija": "Walu", "arabic": "والو", "english": "Nothing", "usage": "Expressing emptiness or nothing"},
-    {"darija": "Bhal bhal", "arabic": "بحال بحال", "english": "Same same / Equal", "usage": "Things are the same"},
-    {"darija": "Yallah", "arabic": "يالله", "english": "Let's go / Come on", "usage": "Encouragement to move or start"}
+  "common_expressions": [
+    {
+      "darija": "Wakha",
+      "arabic": "واخا",
+      "english": "Okay / Alright / Even though",
+      "usage": "Agreement or conceding"
+    },
+    {
+      "darija": "Safi",
+      "arabic": "صافي",
+      "english": "Enough / Done / Okay",
+      "usage": "Ending a topic or agreeing"
+    },
+    {
+      "darija": "Mzyan",
+      "arabic": "مزيان",
+      "english": "Good / Nice",
+      "usage": "Approval"
+    },
+    {
+      "darija": "Khayb",
+      "arabic": "خايب",
+      "english": "Bad / Ugly",
+      "usage": "Disapproval"
+    },
+    {
+      "darija": "Bezzaf",
+      "arabic": "بزاف",
+      "english": "A lot / Too much",
+      "usage": "Intensity"
+    },
+    {
+      "darija": "Shwiya",
+      "arabic": "شوية",
+      "english": "A little / A bit",
+      "usage": "Small amount"
+    },
+    {
+      "darija": "Daba",
+      "arabic": "دابا",
+      "english": "Now",
+      "usage": "Immediacy"
+    },
+    {
+      "darija": "Men be3d",
+      "arabic": "من بعد",
+      "english": "Later / After",
+      "usage": "Delaying"
+    },
+    {
+      "darija": "Ghir",
+      "arabic": "غير",
+      "english": "Just / Only",
+      "usage": "Restriction"
+    },
+    {
+      "darija": "Walu",
+      "arabic": "والو",
+      "english": "Nothing",
+      "usage": "Emptiness"
+    },
+    {
+      "darija": "Koulchi",
+      "arabic": "كلشي",
+      "english": "Everything / Everyone",
+      "usage": "Totality"
+    },
+    {
+      "darija": "Bhal bhal",
+      "arabic": "بحال بحال",
+      "english": "Same same",
+      "usage": "Equality"
+    },
+    {
+      "darija": "Yallah",
+      "arabic": "يالله",
+      "english": "Let's go",
+      "usage": "Encouragement to move"
+    },
+    {
+      "darija": "Inshallah",
+      "arabic": "إن شاء الله",
+      "english": "If God wills",
+      "usage": "Hoping for future events"
+    },
+    {
+      "darija": "Hamdoulillah",
+      "arabic": "الحمد لله",
+      "english": "Praise be to God",
+      "usage": "Expressing relief or satisfaction"
+    },
+    {
+      "darija": "Bismillah",
+      "arabic": "بسم الله",
+      "english": "In the name of God",
+      "usage": "Said before starting something (eating, driving)"
+    },
+    {
+      "darija": "Yak?",
+      "arabic": "ياك؟",
+      "english": "Right? / Isn't it?",
+      "usage": "Asking for confirmation"
+    },
+    {
+      "darija": "Machi mochkil",
+      "arabic": "ماشي مشكل",
+      "english": "No problem",
+      "usage": "Reassurance"
+    },
+    {
+      "darija": "Darori",
+      "arabic": "ضروري",
+      "english": "Necessary",
+      "usage": "Obligation"
+    }
   ],
-  "food": [
-    {"darija": "Tagine", "arabic": "طاجين", "english": "Slow-cooked stew", "usage": "Most famous Moroccan dish"},
-    {"darija": "Couscous", "arabic": "كسكس", "english": "Steamed semolina dish", "usage": "Traditional Friday family meal"},
-    {"darija": "Atay", "arabic": "أتاي", "english": "Moroccan mint tea", "usage": "Symbol of hospitality"},
-    {"darija": "Khobz", "arabic": "خبز", "english": "Bread", "usage": "Eaten with every meal"},
-    {"darija": "Bissara", "arabic": "بيصارة", "english": "Fava bean soup", "usage": "Popular street food breakfast"},
-    {"darija": "Msemen", "arabic": "مسمن", "english": "Layered flatbread", "usage": "Common breakfast item"}
+  "food_and_drink": [
+    {
+      "darija": "Tagine",
+      "arabic": "طاجين",
+      "english": "Clay pot stew",
+      "usage": "National dish"
+    },
+    {
+      "darija": "Couscous / Ksksou",
+      "arabic": "كسكس",
+      "english": "Steamed semolina",
+      "usage": "Friday traditional meal"
+    },
+    {
+      "darija": "Harira",
+      "arabic": "حريرة",
+      "english": "Tomato and lentil soup",
+      "usage": "Ramadan staple"
+    },
+    {
+      "darija": "Pastilla / Bastila",
+      "arabic": "بسطيلة",
+      "english": "Sweet/savory pie",
+      "usage": "Festive dish"
+    },
+    {
+      "darija": "Atay",
+      "arabic": "أتاي",
+      "english": "Mint tea",
+      "usage": "Daily beverage"
+    },
+    {
+      "darija": "Qahwa",
+      "arabic": "قهوة",
+      "english": "Coffee",
+      "usage": "Beverage / Cafe"
+    },
+    {
+      "darija": "Khobz",
+      "arabic": "خبز",
+      "english": "Bread",
+      "usage": "Eaten with most meals"
+    },
+    {
+      "darija": "Bissara",
+      "arabic": "بيصارة",
+      "english": "Fava bean soup",
+      "usage": "Winter/breakfast food"
+    },
+    {
+      "darija": "Msemen",
+      "arabic": "مسمن",
+      "english": "Layered flatbread",
+      "usage": "Breakfast/tea snack"
+    },
+    {
+      "darija": "Baghrir",
+      "arabic": "بغرير",
+      "english": "Spongy pancake",
+      "usage": "Breakfast/tea snack"
+    },
+    {
+      "darija": "Sfenj",
+      "arabic": "سفنج",
+      "english": "Moroccan donut",
+      "usage": "Street food snack"
+    },
+    {
+      "darija": "Lham",
+      "arabic": "اللحم",
+      "english": "Meat",
+      "usage": "General ingredient"
+    },
+    {
+      "darija": "Djaj",
+      "arabic": "الدجاج",
+      "english": "Chicken",
+      "usage": "General ingredient"
+    },
+    {
+      "darija": "Hout",
+      "arabic": "الحوت",
+      "english": "Fish",
+      "usage": "General ingredient"
+    },
+    {
+      "darija": "Lma",
+      "arabic": "الما",
+      "english": "Water",
+      "usage": "Basic drink"
+    },
+    {
+      "darija": "Lben",
+      "arabic": "اللبن",
+      "english": "Fermented milk",
+      "usage": "Often drunk with couscous"
+    },
+    {
+      "darija": "Zit zitoun",
+      "arabic": "زيت الزيتون",
+      "english": "Olive oil",
+      "usage": "Essential ingredient"
+    },
+    {
+      "darija": "Zaytoun",
+      "arabic": "زيتون",
+      "english": "Olives",
+      "usage": "Side dish"
+    }
   ],
-  "slang": [
-    {"darija": "Zwina / Zwine", "arabic": "زوينة / زوين", "english": "Beautiful / Pretty (f/m)", "usage": "Complimenting appearance"},
-    {"darija": "Khouya", "arabic": "خويا", "english": "My brother / Bro", "usage": "Friendly address between males"},
-    {"darija": "Lhwa", "arabic": "الهوى", "english": "Love / Passion", "usage": "Romantic or passionate feeling"},
-    {"darija": "3aycheen", "arabic": "عايشين", "english": "We're living / We're alive", "usage": "Expression of surviving or doing okay"},
-    {"darija": "Nta/Nti", "arabic": "نت / نتي", "english": "You (m/f)", "usage": "Second person address"},
-    {"darija": "Ana", "arabic": "أنا", "english": "I / Me", "usage": "First person"},
-    {"darija": "Hna", "arabic": "حنا", "english": "We / Us", "usage": "First person plural"}
+  "family_and_people": [
+    {
+      "darija": "Mmi / Mama",
+      "arabic": "مّي / ماما",
+      "english": "My mother",
+      "usage": "Addressing mother"
+    },
+    {
+      "darija": "Bba / Papa",
+      "arabic": "بّا / بابا",
+      "english": "My father",
+      "usage": "Addressing father"
+    },
+    {
+      "darija": "Khouya",
+      "arabic": "خويا",
+      "english": "My brother",
+      "usage": "Literal or close friend"
+    },
+    {
+      "darija": "Khti",
+      "arabic": "ختي",
+      "english": "My sister",
+      "usage": "Literal or close friend"
+    },
+    {
+      "darija": "Jeddi",
+      "arabic": "جدي",
+      "english": "My grandfather",
+      "usage": "Family"
+    },
+    {
+      "darija": "Jeddati",
+      "arabic": "جداتي",
+      "english": "My grandmother",
+      "usage": "Family"
+    },
+    {
+      "darija": "Weldi",
+      "arabic": "ولدي",
+      "english": "My son",
+      "usage": "Family"
+    },
+    {
+      "darija": "Benti",
+      "arabic": "بنتي",
+      "english": "My daughter",
+      "usage": "Family"
+    },
+    {
+      "darija": "Rajel",
+      "arabic": "راجل",
+      "english": "Man / Husband",
+      "usage": "Gender / Relationship"
+    },
+    {
+      "darija": "Mra",
+      "arabic": "مرا",
+      "english": "Woman / Wife",
+      "usage": "Gender / Relationship"
+    },
+    {
+      "darija": "Dri / Wld",
+      "arabic": "دري / ولد",
+      "english": "Boy",
+      "usage": "Child"
+    },
+    {
+      "darija": "Driya / Bnt",
+      "arabic": "درية / بنت",
+      "english": "Girl",
+      "usage": "Child"
+    },
+    {
+      "darija": "3emmi",
+      "arabic": "عمي",
+      "english": "My paternal uncle",
+      "usage": "Family"
+    },
+    {
+      "darija": "Khali",
+      "arabic": "خالي",
+      "english": "My maternal uncle",
+      "usage": "Family"
+    }
+  ],
+  "time_and_days": [
+    {
+      "darija": "Lyoum",
+      "arabic": "اليوم",
+      "english": "Today",
+      "usage": "Current day"
+    },
+    {
+      "darija": "Ghedda",
+      "arabic": "غدا",
+      "english": "Tomorrow",
+      "usage": "Next day"
+    },
+    {
+      "darija": "Lbareh",
+      "arabic": "البارح",
+      "english": "Yesterday",
+      "usage": "Previous day"
+    },
+    {
+      "darija": "Sbah",
+      "arabic": "الصباح",
+      "english": "Morning",
+      "usage": "Time of day"
+    },
+    {
+      "darija": "La3chiya",
+      "arabic": "العشية",
+      "english": "Afternoon / Evening",
+      "usage": "Time of day"
+    },
+    {
+      "darija": "Lil",
+      "arabic": "الليل",
+      "english": "Night",
+      "usage": "Time of day"
+    },
+    {
+      "darija": "D9iqa",
+      "arabic": "دقيقة",
+      "english": "Minute",
+      "usage": "Measurement"
+    },
+    {
+      "darija": "Sa3a",
+      "arabic": "ساعة",
+      "english": "Hour",
+      "usage": "Measurement"
+    },
+    {
+      "darija": "Simana",
+      "arabic": "سيمانة",
+      "english": "Week",
+      "usage": "Measurement"
+    },
+    {
+      "darija": "Chhar",
+      "arabic": "شهر",
+      "english": "Month",
+      "usage": "Measurement"
+    },
+    {
+      "darija": "L3am",
+      "arabic": "العام",
+      "english": "Year",
+      "usage": "Measurement"
+    },
+    {
+      "darija": "Tnin",
+      "arabic": "التنين",
+      "english": "Monday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Tlat",
+      "arabic": "التلات",
+      "english": "Tuesday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Lareb3",
+      "arabic": "لربع",
+      "english": "Wednesday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Lkhmis",
+      "arabic": "الخميس",
+      "english": "Thursday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Jem3a",
+      "arabic": "الجمعة",
+      "english": "Friday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Ssebt",
+      "arabic": "السبت",
+      "english": "Saturday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Lhed",
+      "arabic": "الحد",
+      "english": "Sunday",
+      "usage": "Day"
+    },
+    {
+      "darija": "Bakri",
+      "arabic": "بكري",
+      "english": "Early",
+      "usage": "Timing"
+    },
+    {
+      "darija": "M3etel",
+      "arabic": "معطل",
+      "english": "Late",
+      "usage": "Timing"
+    }
+  ],
+  "places_and_directions": [
+    {
+      "darija": "Dar",
+      "arabic": "الدار",
+      "english": "House",
+      "usage": "Residence"
+    },
+    {
+      "darija": "Zenga",
+      "arabic": "الزنقة",
+      "english": "Street",
+      "usage": "Outside"
+    },
+    {
+      "darija": "Hanout",
+      "arabic": "حانوت",
+      "english": "Shop",
+      "usage": "Grocery store"
+    },
+    {
+      "darija": "Souq",
+      "arabic": "سوق",
+      "english": "Market",
+      "usage": "Shopping area"
+    },
+    {
+      "darija": "Sbitar",
+      "arabic": "سبيطار",
+      "english": "Hospital",
+      "usage": "Medical facility"
+    },
+    {
+      "darija": "Mdina",
+      "arabic": "مدينة",
+      "english": "City / Old town",
+      "usage": "Urban area"
+    },
+    {
+      "darija": "Bhar",
+      "arabic": "بحر",
+      "english": "Beach / Sea",
+      "usage": "Nature"
+    },
+    {
+      "darija": "Jbel",
+      "arabic": "جبل",
+      "english": "Mountain",
+      "usage": "Nature"
+    },
+    {
+      "darija": "Qahwa",
+      "arabic": "قهوة",
+      "english": "Cafe",
+      "usage": "Social place"
+    },
+    {
+      "darija": "Matar",
+      "arabic": "مطار",
+      "english": "Airport",
+      "usage": "Travel"
+    },
+    {
+      "darija": "Mahata",
+      "arabic": "محطة",
+      "english": "Station (bus/train)",
+      "usage": "Travel"
+    },
+    {
+      "darija": "Limen",
+      "arabic": "ليمن",
+      "english": "Right",
+      "usage": "Direction"
+    },
+    {
+      "darija": "Liser",
+      "arabic": "ليسر",
+      "english": "Left",
+      "usage": "Direction"
+    },
+    {
+      "darija": "Nichan",
+      "arabic": "نيشان",
+      "english": "Straight",
+      "usage": "Direction"
+    },
+    {
+      "darija": "Hna",
+      "arabic": "هنا",
+      "english": "Here",
+      "usage": "Location"
+    },
+    {
+      "darija": "Lhih",
+      "arabic": "لهيه",
+      "english": "There",
+      "usage": "Location"
+    }
+  ],
+  "shopping_and_money": [
+    {
+      "darija": "Chhal?",
+      "arabic": "شحال؟",
+      "english": "How much?",
+      "usage": "Asking for price"
+    },
+    {
+      "darija": "Chhal taman?",
+      "arabic": "شحال التمن؟",
+      "english": "What is the price?",
+      "usage": "Asking for price"
+    },
+    {
+      "darija": "Ghali",
+      "arabic": "غالي",
+      "english": "Expensive",
+      "usage": "Bargaining"
+    },
+    {
+      "darija": "Rkhis",
+      "arabic": "رخيص",
+      "english": "Cheap",
+      "usage": "Pricing"
+    },
+    {
+      "darija": "N9es shwiya",
+      "arabic": "نقص شوية",
+      "english": "Lower the price a bit",
+      "usage": "Bargaining"
+    },
+    {
+      "darija": "Flouss",
+      "arabic": "فلوس",
+      "english": "Money",
+      "usage": "Currency"
+    },
+    {
+      "darija": "Sarf",
+      "arabic": "صرف",
+      "english": "Change (coins)",
+      "usage": "Transactions"
+    },
+    {
+      "darija": "Dirham",
+      "arabic": "درهم",
+      "english": "Dirham",
+      "usage": "Moroccan currency"
+    }
+  ],
+  "verbs_action": [
+    {
+      "darija": "Bghit",
+      "arabic": "بغيت",
+      "english": "I want",
+      "usage": "Desire"
+    },
+    {
+      "darija": "Ma bghitch",
+      "arabic": "ما بغيتش",
+      "english": "I don't want",
+      "usage": "Rejection"
+    },
+    {
+      "darija": "Koul",
+      "arabic": "كول",
+      "english": "Eat",
+      "usage": "Command"
+    },
+    {
+      "darija": "Chreb",
+      "arabic": "شرب",
+      "english": "Drink",
+      "usage": "Command"
+    },
+    {
+      "darija": "Sir",
+      "arabic": "سير",
+      "english": "Go",
+      "usage": "Command"
+    },
+    {
+      "darija": "Aji",
+      "arabic": "أجي",
+      "english": "Come",
+      "usage": "Command"
+    },
+    {
+      "darija": "Chouf",
+      "arabic": "شوف",
+      "english": "Look",
+      "usage": "Command"
+    },
+    {
+      "darija": "Sme3",
+      "arabic": "سمع",
+      "english": "Listen",
+      "usage": "Command"
+    },
+    {
+      "darija": "Gles",
+      "arabic": "گلس",
+      "english": "Sit",
+      "usage": "Command"
+    },
+    {
+      "darija": "Hder",
+      "arabic": "هدر",
+      "english": "Speak",
+      "usage": "Action"
+    },
+    {
+      "darija": "N3es",
+      "arabic": "نعس",
+      "english": "Sleep",
+      "usage": "Action"
+    },
+    {
+      "darija": "Fik",
+      "arabic": "فيق",
+      "english": "Wake up",
+      "usage": "Action"
+    },
+    {
+      "darija": "Dhek",
+      "arabic": "ضحك",
+      "english": "Laugh",
+      "usage": "Action"
+    },
+    {
+      "darija": "Bki",
+      "arabic": "بكي",
+      "english": "Cry",
+      "usage": "Action"
+    },
+    {
+      "darija": "Chri",
+      "arabic": "شري",
+      "english": "Buy",
+      "usage": "Action"
+    },
+    {
+      "darija": "Khalles",
+      "arabic": "خلص",
+      "english": "Pay",
+      "usage": "Action"
+    },
+    {
+      "darija": "3awen",
+      "arabic": "عاون",
+      "english": "Help",
+      "usage": "Action"
+    },
+    {
+      "darija": "Fhem",
+      "arabic": "فهم",
+      "english": "Understand",
+      "usage": "Cognitive"
+    }
+  ],
+  "slang_and_street_darija": [
+    {
+      "darija": "Wa3er / Wa3ra",
+      "arabic": "واعر / واعرة",
+      "english": "Awesome / Amazing / Difficult",
+      "usage": "Very versatile adjective"
+    },
+    {
+      "darija": "Nadi / Nadiya",
+      "arabic": "ناضي / ناضية",
+      "english": "Perfect / Ready / Top tier",
+      "usage": "Describing something flawless"
+    },
+    {
+      "darija": "Hchouma",
+      "arabic": "حشومة",
+      "english": "Shame / Disgrace",
+      "usage": "Calling out bad behavior"
+    },
+    {
+      "darija": "Z3ma",
+      "arabic": "زعما",
+      "english": "Supposedly / Like / I mean",
+      "usage": "Very common filler word"
+    },
+    {
+      "darija": "Mklakh",
+      "arabic": "مكلخ",
+      "english": "Stupid / Foolish",
+      "usage": "Insult"
+    },
+    {
+      "darija": "Sat / Sata",
+      "arabic": "ساط / ساطة",
+      "english": "Guy / Girl (Partner)",
+      "usage": "Youth slang"
+    },
+    {
+      "darija": "Nari",
+      "arabic": "ناري",
+      "english": "Oh my god / Wow",
+      "usage": "Expression of shock or surprise"
+    },
+    {
+      "darija": "Hrab",
+      "arabic": "هرب",
+      "english": "Hilarious / Escaped",
+      "usage": "Used when something is very funny"
+    },
+    {
+      "darija": "M9awda",
+      "arabic": "مقاودة",
+      "english": "Messed up / Hard",
+      "usage": "Vulgar/slang for a tough situation"
+    },
+    {
+      "darija": "Dawi khawi",
+      "arabic": "داوي خاوي",
+      "english": "Talking nonsense / Empty talk",
+      "usage": "Describing someone who speaks without acting"
+    },
+    {
+      "darija": "Chof tchouf",
+      "arabic": "شوف تشوف",
+      "english": "We'll see",
+      "usage": "Expressing uncertainty about the future"
+    }
+  ],
+  "pronouns": [
+    {
+      "darija": "Ana",
+      "arabic": "أنا",
+      "english": "I / Me",
+      "usage": "1st person"
+    },
+    {
+      "darija": "Nta / Nti",
+      "arabic": "نتا / نتي",
+      "english": "You (m/f)",
+      "usage": "2nd person"
+    },
+    {
+      "darija": "Huwa",
+      "arabic": "هو",
+      "english": "He",
+      "usage": "3rd person male"
+    },
+    {
+      "darija": "Hiya",
+      "arabic": "هي",
+      "english": "She",
+      "usage": "3rd person female"
+    },
+    {
+      "darija": "Hna",
+      "arabic": "حنا",
+      "english": "We / Us",
+      "usage": "1st person plural"
+    },
+    {
+      "darija": "Ntuma",
+      "arabic": "نتوما",
+      "english": "You all",
+      "usage": "2nd person plural"
+    },
+    {
+      "darija": "Huma",
+      "arabic": "هما",
+      "english": "They",
+      "usage": "3rd person plural"
+    },
+    {
+      "darija": "Dyali",
+      "arabic": "ديالي",
+      "english": "Mine",
+      "usage": "Possessive"
+    },
+    {
+      "darija": "Dyalek",
+      "arabic": "ديالك",
+      "english": "Yours",
+      "usage": "Possessive"
+    }
   ],
   "numbers": [
-    {"darija": "Wahed", "arabic": "واحد", "english": "One", "usage": "Counting"},
-    {"darija": "Juj", "arabic": "جوج", "english": "Two", "usage": "Counting"},
-    {"darija": "Tlata", "arabic": "تلاتة", "english": "Three", "usage": "Counting"},
-    {"darija": "Rb3a", "arabic": "ربعة", "english": "Four", "usage": "Counting"},
-    {"darija": "Khamsa", "arabic": "خمسة", "english": "Five", "usage": "Counting"}
+    {
+      "darija": "Sifr / Ziro",
+      "arabic": "صفر / زيرو",
+      "english": "Zero",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Wahed",
+      "arabic": "واحد",
+      "english": "One",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Juj",
+      "arabic": "جوج",
+      "english": "Two",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Tlata",
+      "arabic": "تلاتة",
+      "english": "Three",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Rb3a",
+      "arabic": "ربعة",
+      "english": "Four",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Khamsa",
+      "arabic": "خمسة",
+      "english": "Five",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Seta",
+      "arabic": "ستة",
+      "english": "Six",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Sbe3a",
+      "arabic": "سبعة",
+      "english": "Seven",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Tmenya",
+      "arabic": "تمنية",
+      "english": "Eight",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Tse3oud",
+      "arabic": "تسعود",
+      "english": "Nine",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "3echra",
+      "arabic": "عشرة",
+      "english": "Ten",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Hda3ch",
+      "arabic": "حضاش",
+      "english": "Eleven",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Tna3ch",
+      "arabic": "طناش",
+      "english": "Twelve",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "3echrin",
+      "arabic": "عشرين",
+      "english": "Twenty",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Tlटीन",
+      "arabic": "تلاتين",
+      "english": "Thirty",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Mya",
+      "arabic": "مية",
+      "english": "One hundred",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Alf",
+      "arabic": "ألف",
+      "english": "One thousand",
+      "usage": "Math/Counting"
+    },
+    {
+      "darija": "Melyoun",
+      "arabic": "مليون",
+      "english": "One million",
+      "usage": "Math/Counting"
+    }
   ],
-  "cultural_tips": [
+  "colors": [
+    {
+      "darija": "Khel",
+      "arabic": "كحل",
+      "english": "Black",
+      "usage": "Color"
+    },
+    {
+      "darija": "Bied",
+      "arabic": "بيض",
+      "english": "White",
+      "usage": "Color"
+    },
+    {
+      "darija": "Hmer",
+      "arabic": "حمر",
+      "english": "Red",
+      "usage": "Color"
+    },
+    {
+      "darija": "Zre9",
+      "arabic": "زرق",
+      "english": "Blue",
+      "usage": "Color"
+    },
+    {
+      "darija": "Khder",
+      "arabic": "خضر",
+      "english": "Green",
+      "usage": "Color"
+    },
+    {
+      "darija": "Sfer",
+      "arabic": "صفر",
+      "english": "Yellow",
+      "usage": "Color"
+    },
+    {
+      "darija": "Limouni",
+      "arabic": "ليموني",
+      "english": "Orange",
+      "usage": "Color"
+    },
+    {
+      "darija": "Qahwi",
+      "arabic": "قهوي",
+      "english": "Brown",
+      "usage": "Color"
+    }
+  ],
+  "weather": [
+    {
+      "darija": "Chta",
+      "arabic": "الشتا",
+      "english": "Rain / Winter",
+      "usage": "Weather"
+    },
+    {
+      "darija": "Chems",
+      "arabic": "الشمس",
+      "english": "Sun",
+      "usage": "Weather"
+    },
+    {
+      "darija": "Lberd",
+      "arabic": "البرد",
+      "english": "Cold",
+      "usage": "Weather / Temperature"
+    },
+    {
+      "darija": "Ssehd",
+      "arabic": "الصهْد",
+      "english": "Heat",
+      "usage": "Weather / Temperature"
+    },
+    {
+      "darija": "Tlj",
+      "arabic": "التلج",
+      "english": "Snow",
+      "usage": "Weather"
+    }
+  ],
+  "emergencies": [
+    {
+      "darija": "3iyt lboulis",
+      "arabic": "عيط للبوليس",
+      "english": "Call the police",
+      "usage": "Emergency"
+    },
+    {
+      "darija": "Sbitar",
+      "arabic": "سبيطار",
+      "english": "Hospital",
+      "usage": "Medical emergency"
+    },
+    {
+      "darija": "3awenni",
+      "arabic": "عاوني",
+      "english": "Help me",
+      "usage": "Asking for help"
+    },
+    {
+      "darija": "Cheffar",
+      "arabic": "شفار",
+      "english": "Thief",
+      "usage": "Warning / Crime"
+    },
+    {
+      "darija": "W9ef",
+      "arabic": "وقف",
+      "english": "Stop",
+      "usage": "Command / Danger"
+    }
+  ],
+  "greetings_and_social": [
+    {"darija": "Salam", "arabic": "سلام", "english": "Hello / Peace", "usage": "Most common greeting"},
+    {"darija": "Labas?", "arabic": "لاباس؟", "english": "Are you fine? / How are you?", "usage": "Common check-in"},
+    {"darija": "Kif dayr?", "arabic": "كيف داير؟", "english": "How are you? (to a male)", "usage": "Casual greeting"},
+    {"darija": "Kif dayra?", "arabic": "كيف دايرة؟", "english": "How are you? (to a female)", "usage": "Casual greeting"},
+    {"darija": "Ash khbarek?", "arabic": "أش خبارك؟", "english": "What's your news?", "usage": "Asking about someone's life"},
+    {"darija": "Kulshi bikhir?", "arabic": "كلشي بخير؟", "english": "Is everything good?", "usage": "General well-being question"},
+    {"darija": "Sbah lkhir", "arabic": "صباح الخير", "english": "Good morning", "usage": "Morning greeting"},
+    {"darija": "Msa lkhir", "arabic": "مسا الخير", "english": "Good evening", "usage": "Evening greeting"},
+    {"darija": "Tsbah 3la khir", "arabic": "تصبح على خير", "english": "Good night", "usage": "Said before sleeping"},
+    {"darija": "Bslama", "arabic": "بسلامة", "english": "Goodbye", "usage": "Parting"},
+    {"darija": "Thalla f rassek", "arabic": "تهلا فراسك", "english": "Take care of yourself", "usage": "Warm goodbye"},
+    {"darija": "Nchoufek mn be3d", "arabic": "نشوفك من بعد", "english": "See you later", "usage": "Parting"},
+    {"darija": "Merhba", "arabic": "مرحبا", "english": "Welcome", "usage": "Welcoming guests"},
+    {"darija": "Kif daz nharek?", "arabic": "كيف داز نهارك؟", "english": "How was your day?", "usage": "Daily check-in"},
+    {"darija": "Ki dayrin malin dar?", "arabic": "كي دايرين مالين الدار؟", "english": "How is the family?", "usage": "Asking about family"},
+    {"darija": "Hamdullah, w nta?", "arabic": "الحمد لله، و نتا؟", "english": "Praise God, and you?", "usage": "Response to how are you"},
+    {"darija": "Ash katsaweb?", "arabic": "أش كاتصاوب؟", "english": "What are you doing/making?", "usage": "Casual inquiry"},
+    {"darija": "Ghberti!", "arabic": "غبرتي!", "english": "You disappeared! (Long time no see)", "usage": "After a long absence"},
+    {"darija": "Ash had lghiba?", "arabic": "أش هاد الغيبة؟", "english": "What is this absence?", "usage": "After a long absence"},
+    {"darija": "Twahachtek", "arabic": "توحشتك", "english": "I missed you", "usage": "Expressing longing"},
+    {"darija": "Htta ana", "arabic": "حتى أنا", "english": "Me too", "usage": "Agreement"},
+    {"darija": "Forsa sa3ida", "arabic": "فرصة سعيدة", "english": "Nice to meet you", "usage": "First meeting"},
+    {"darija": "Nhar kbir hada", "arabic": "نهار كبير هادا", "english": "This is a big day (Polite welcome)", "usage": "Welcoming guests warmly"}
+  ],
+  "essential_questions": [
+    {"darija": "Shno?", "arabic": "شنو؟", "english": "What?", "usage": "Basic question word"},
+    {"darija": "Shno bghiti?", "arabic": "شنو بغيتي؟", "english": "What do you want?", "usage": "Asking for wants"},
+    {"darija": "Shno smitek?", "arabic": "شنو سميتك؟", "english": "What is your name?", "usage": "Introduction"},
+    {"darija": "Shno ban lik?", "arabic": "شنو بان ليك؟", "english": "What do you think?", "usage": "Asking for opinion"},
+    {"darija": "Shno darti?", "arabic": "شنو درتي؟", "english": "What did you do?", "usage": "Inquiry"},
+    {"darija": "Shno hadchi?", "arabic": "شنو هادشي؟", "english": "What is this?", "usage": "Pointing at something"},
+    {"darija": "Shkoun?", "arabic": "شكون؟", "english": "Who?", "usage": "Basic question word"},
+    {"darija": "Shkoun nta?", "arabic": "شكون نتا؟", "english": "Who are you?", "usage": "Asking identity"},
+    {"darija": "Shkoun li ja?", "arabic": "شكون لي جا؟", "english": "Who came?", "usage": "Inquiry"},
+    {"darija": "Fin?", "arabic": "فين؟", "english": "Where?", "usage": "Basic question word"},
+    {"darija": "Fin ghadi?", "arabic": "فين غادي؟", "english": "Where are you going?", "usage": "Asking direction"},
+    {"darija": "Fin kounti?", "arabic": "فين كنتي؟", "english": "Where were you?", "usage": "Inquiry"},
+    {"darija": "Fin saken?", "arabic": "فين ساكن؟", "english": "Where do you live?", "usage": "Geography"},
+    {"darija": "Kifash?", "arabic": "كيفاش؟", "english": "How?", "usage": "Basic question word"},
+    {"darija": "Kifash darti liha?", "arabic": "كيفاش درتي ليها؟", "english": "How did you do it?", "usage": "Inquiry"},
+    {"darija": "Kifash ngoul...?", "arabic": "كيفاش نقول...؟", "english": "How do I say...?", "usage": "Language learning"},
+    {"darija": "Fouqash? / Imta?", "arabic": "فوقاش؟ / إمتى؟", "english": "When?", "usage": "Basic question word"},
+    {"darija": "Imta ghadi tmshi?", "arabic": "إمتى غادي تمشي؟", "english": "When are you going?", "usage": "Planning"},
+    {"darija": "Imta jiti?", "arabic": "إمتى جيتي؟", "english": "When did you arrive?", "usage": "Arrival inquiry"},
+    {"darija": "3lash?", "arabic": "علاش؟", "english": "Why?", "usage": "Basic question word"},
+    {"darija": "3lash la?", "arabic": "علاش لا؟", "english": "Why not?", "usage": "Challenging a refusal"},
+    {"darija": "3lash darti hakka?", "arabic": "علاش درتي هكا؟", "english": "Why did you do this?", "usage": "Questioning behavior"},
+    {"darija": "Chhal?", "arabic": "شحال؟", "english": "How much / How many?", "usage": "Quantity or price"},
+    {"darija": "Chhal f sa3a?", "arabic": "شحال ف الساعة؟", "english": "What time is it?", "usage": "Asking the time"},
+    {"darija": "Chhal f 3emrek?", "arabic": "شحال ف عمرك؟", "english": "How old are you?", "usage": "Age inquiry"},
+    {"darija": "Chhal taman?", "arabic": "شحال التمن؟", "english": "What is the price?", "usage": "Shopping"},
+    {"darija": "Wash?", "arabic": "واش؟", "english": "Is / Are / Do (Question marker)", "usage": "Yes/no question prefix"},
+    {"darija": "Wash mzyan?", "arabic": "واش مزيان؟", "english": "Is it good?", "usage": "Checking quality"},
+    {"darija": "Wash fhamti?", "arabic": "واش فهمتي؟", "english": "Did you understand?", "usage": "Checking comprehension"},
+    {"darija": "Wash bghiti tekel?", "arabic": "واش بغيتي تاكل؟", "english": "Do you want to eat?", "usage": "Food invitation"},
+    {"darija": "Wash nta mrid?", "arabic": "واش نتا مريض؟", "english": "Are you sick?", "usage": "Health inquiry"},
+    {"darija": "Wash momkin?", "arabic": "واش ممكن؟", "english": "Is it possible?", "usage": "Asking for permission"},
+    {"darija": "Wash saliti?", "arabic": "واش ساليتي؟", "english": "Are you done?", "usage": "Checking completion"},
+    {"darija": "Mn in blad nta?", "arabic": "من إينا بلاد نتا؟", "english": "Which country are you from?", "usage": "Origin inquiry"},
+    {"darija": "Mnin nta?", "arabic": "منين نتا؟", "english": "Where are you from?", "usage": "Origin inquiry"},
+    {"darija": "Wach kayn chi jadid?", "arabic": "واش كاين شي جديد؟", "english": "Is there anything new?", "usage": "Catching up"},
+    {"darija": "Wach mssali?", "arabic": "واش مسالي؟", "english": "Are you free?", "usage": "Availability inquiry"},
+    {"darija": "Bchhal hadchi?", "arabic": "بشحال هادشي؟", "english": "How much is this?", "usage": "Shopping"}
+  ],
+  "common_verbs_past_tense": [
+    {"darija": "Bghit", "arabic": "بغيت", "english": "I want", "usage": "Desire"},
+    {"darija": "Ma bghitch", "arabic": "ما بغيتش", "english": "I don't want", "usage": "Rejection"},
+    {"darija": "Fhamt", "arabic": "فهمت", "english": "I understood", "usage": "Comprehension"},
+    {"darija": "Ma fhamtch", "arabic": "ما فهمتش", "english": "I didn't understand", "usage": "Lack of comprehension"},
+    {"darija": "3reft", "arabic": "عرفت", "english": "I know / I knew", "usage": "Knowledge"},
+    {"darija": "Ma 3reftch", "arabic": "ما عرفتش", "english": "I don't know", "usage": "Lack of knowledge"},
+    {"darija": "Nsit", "arabic": "نسيت", "english": "I forgot", "usage": "Memory lapse"},
+    {"darija": "3qelt", "arabic": "عقلت", "english": "I remembered", "usage": "Recall"},
+    {"darija": "Mshit", "arabic": "مشيت", "english": "I went", "usage": "Movement"},
+    {"darija": "Jit", "arabic": "جيت", "english": "I came", "usage": "Arrival"},
+    {"darija": "Klit", "arabic": "كليت", "english": "I ate", "usage": "Food"},
+    {"darija": "Shrebt", "arabic": "شربت", "english": "I drank", "usage": "Drinking"},
+    {"darija": "N3est", "arabic": "نعست", "english": "I slept", "usage": "Sleep"},
+    {"darija": "Feqt", "arabic": "فقت", "english": "I woke up", "usage": "Waking"},
+    {"darija": "Gelt", "arabic": "قلت / گلت", "english": "I said", "usage": "Speaking"},
+    {"darija": "Sme3t", "arabic": "سمعت", "english": "I heard", "usage": "Listening"},
+    {"darija": "Cheft", "arabic": "شفت", "english": "I saw", "usage": "Seeing"},
+    {"darija": "Dert", "arabic": "درت", "english": "I did", "usage": "Action"},
+    {"darija": "Khdit", "arabic": "خديت", "english": "I took", "usage": "Taking"},
+    {"darija": "3tit", "arabic": "عطيت", "english": "I gave", "usage": "Giving"},
+    {"darija": "Jwebt", "arabic": "جاوبت", "english": "I answered", "usage": "Responding"},
+    {"darija": "Swwelt", "arabic": "سولت", "english": "I asked", "usage": "Inquiring"},
+    {"darija": "Dwezt", "arabic": "دوزت", "english": "I passed / spent time", "usage": "Time passing"},
+    {"darija": "9rit", "arabic": "قريت", "english": "I read / studied", "usage": "Learning"},
+    {"darija": "Ktebt", "arabic": "كتبت", "english": "I wrote", "usage": "Writing"},
+    {"darija": "Dkhelt", "arabic": "دخلت", "english": "I entered", "usage": "Entering"},
+    {"darija": "Khrejt", "arabic": "خرجت", "english": "I exited", "usage": "Exiting"},
+    {"darija": "Rje3t", "arabic": "رجعت", "english": "I returned", "usage": "Return"},
+    {"darija": "Wqeft", "arabic": "وقفت", "english": "I stopped / stood", "usage": "Stopping"},
+    {"darija": "Gless", "arabic": "گلس", "english": "I sat", "usage": "Sitting"}
+  ],
+  "adjectives_and_states": [
+    {"darija": "Mzyan", "arabic": "مزيان", "english": "Good", "usage": "Approval"},
+    {"darija": "Khayb", "arabic": "خايب", "english": "Bad / Ugly", "usage": "Disapproval"},
+    {"darija": "Kbir", "arabic": "كبير", "english": "Big", "usage": "Size"},
+    {"darija": "Sghir", "arabic": "صغير", "english": "Small", "usage": "Size"},
+    {"darija": "Ghali", "arabic": "غالي", "english": "Expensive", "usage": "Shopping"},
+    {"darija": "Rkhis", "arabic": "رخيص", "english": "Cheap", "usage": "Shopping"},
+    {"darija": "Zwin", "arabic": "زوين", "english": "Beautiful", "usage": "Appearance"},
+    {"darija": "Qbih", "arabic": "قبيح", "english": "Mean / Ugly", "usage": "Appearance"},
+    {"darija": "Skhoun", "arabic": "سخون", "english": "Hot", "usage": "Temperature"},
+    {"darija": "Bared", "arabic": "بارد", "english": "Cold", "usage": "Temperature"},
+    {"darija": "Jdid", "arabic": "جديد", "english": "New", "usage": "Age of object"},
+    {"darija": "Qdim", "arabic": "قديم", "english": "Old", "usage": "Age of object"},
+    {"darija": "Tqil", "arabic": "تقيل", "english": "Heavy / Slow", "usage": "Weight or speed"},
+    {"darija": "Khfif", "arabic": "خفيف", "english": "Light / Fast", "usage": "Weight or speed"},
+    {"darija": "3amer", "arabic": "عامر", "english": "Full", "usage": "Capacity"},
+    {"darija": "Khawi", "arabic": "خاوي", "english": "Empty", "usage": "Capacity"},
+    {"darija": "Nqi", "arabic": "نقي", "english": "Clean", "usage": "Cleanliness"},
+    {"darija": "Mwssekh", "arabic": "موسخ", "english": "Dirty", "usage": "Cleanliness"},
+    {"darija": "Mrid", "arabic": "مريض", "english": "Sick", "usage": "Health"},
+    {"darija": "S7i7", "arabic": "صحيح", "english": "Healthy / Strong", "usage": "Health"},
+    {"darija": "3iyan", "arabic": "عيان", "english": "Tired", "usage": "Energy level"},
+    {"darija": "Ferhan", "arabic": "فرحان", "english": "Happy", "usage": "Emotion"},
+    {"darija": "Mqelleq", "arabic": "مقلق", "english": "Sad / Angry / Upset", "usage": "Emotion"},
+    {"darija": "Je3an", "arabic": "جيعان", "english": "Hungry", "usage": "Hunger"},
+    {"darija": "3etchan", "arabic": "عطشان", "english": "Thirsty", "usage": "Thirst"}
+  ],
+  "connecting_words_and_directions": [
+    {"darija": "Wakha", "arabic": "واخا", "english": "Okay / Alright", "usage": "Agreement"},
+    {"darija": "Safi", "arabic": "صافي", "english": "Enough / Done", "usage": "Ending a topic"},
+    {"darija": "Daba", "arabic": "دابا", "english": "Now", "usage": "Immediacy"},
+    {"darija": "Men be3d", "arabic": "من بعد", "english": "Later", "usage": "Delay"},
+    {"darija": "Ghir", "arabic": "غير", "english": "Just / Only", "usage": "Restriction"},
+    {"darija": "Walu", "arabic": "والو", "english": "Nothing", "usage": "Emptiness"},
+    {"darija": "Koulchi", "arabic": "كلشي", "english": "Everything / Everyone", "usage": "Totality"},
+    {"darija": "Bhal bhal", "arabic": "بحال بحال", "english": "Same same", "usage": "Equality"},
+    {"darija": "Yallah", "arabic": "يالله", "english": "Let's go", "usage": "Encouragement to move"},
+    {"darija": "3afak", "arabic": "عفاك", "english": "Please", "usage": "Making a request"},
+    {"darija": "Chokran", "arabic": "شكرا", "english": "Thank you", "usage": "Gratitude"},
+    {"darija": "Smeh li", "arabic": "سمح لي", "english": "Sorry / Excuse me", "usage": "Apologizing"},
+    {"darija": "Machi mochkil", "arabic": "ماشي مشكل", "english": "No problem", "usage": "Reassurance"},
+    {"darija": "Darori", "arabic": "ضروري", "english": "Necessary", "usage": "Obligation"},
+    {"darija": "Hchouma", "arabic": "حشومة", "english": "Shame / Inappropriate", "usage": "Calling out bad behavior"},
+    {"darija": "Z3ma", "arabic": "زعما", "english": "Supposedly / Like", "usage": "Filler word"},
+    {"darija": "Yak?", "arabic": "ياك؟", "english": "Right?", "usage": "Asking for confirmation"},
+    {"darija": "Nari", "arabic": "ناري", "english": "Oh my god (Surprise)", "usage": "Surprise expression"},
+    {"darija": "Bzaf", "arabic": "بزاف", "english": "A lot", "usage": "Intensity"},
+    {"darija": "Shwiya", "arabic": "شوية", "english": "A little", "usage": "Small amount"},
+    {"darija": "Bghit ngoul", "arabic": "بغيت نقول", "english": "I mean / I want to say", "usage": "Clarifying"},
+    {"darija": "Ou", "arabic": "و", "english": "And", "usage": "Conjunction"},
+    {"darija": "Wla", "arabic": "ولا", "english": "Or", "usage": "Alternative"},
+    {"darija": "Bessa7?", "arabic": "بصح؟", "english": "Really?", "usage": "Surprise or confirmation"},
+    {"darija": "Dyali", "arabic": "ديالي", "english": "Mine", "usage": "Possessive"},
+    {"darija": "Dyalek", "arabic": "ديالك", "english": "Yours", "usage": "Possessive"},
+    {"darija": "Dyalhom", "arabic": "ديالهم", "english": "Theirs", "usage": "Possessive"},
+    {"darija": "Hna", "arabic": "هنا", "english": "Here", "usage": "Location"},
+    {"darija": "Lhih", "arabic": "لهيه", "english": "There", "usage": "Location"},
+    {"darija": "Lfouq", "arabic": "لفوق", "english": "Up", "usage": "Direction"},
+    {"darija": "Lteht", "arabic": "لتحت", "english": "Down", "usage": "Direction"},
+    {"darija": "Qoddam", "arabic": "قدام", "english": "In front", "usage": "Direction"},
+    {"darija": "Mora", "arabic": "مورا", "english": "Behind", "usage": "Direction"},
+    {"darija": "West", "arabic": "وسط", "english": "Inside", "usage": "Direction"},
+    {"darija": "Berra", "arabic": "برا", "english": "Outside", "usage": "Direction"},
+    {"darija": "Qrib", "arabic": "قريب", "english": "Near", "usage": "Distance"},
+    {"darija": "B3id", "arabic": "بعيد", "english": "Far", "usage": "Distance"}
+  ],
+  "everyday_phrases_and_idioms": [
+    {"darija": "Sir bhalek", "arabic": "سير بحالك", "english": "Go away", "usage": "Dismissal"},
+    {"darija": "3tini ttisa3", "arabic": "عطيني التيساع", "english": "Leave me alone", "usage": "Asking for space"},
+    {"darija": "Diha f rassek", "arabic": "ديها فراسك", "english": "Mind your own business", "usage": "Privacy"},
+    {"darija": "Ma 3andi mangoul", "arabic": "ما عندي مانقول", "english": "I have nothing to say / Speechless", "usage": "Speechlessness"},
+    {"darija": "Lah ykhalik", "arabic": "الله يخليك", "english": "May God keep you (Please)", "usage": "Polite request"},
+    {"darija": "Lah yrham lwalidin", "arabic": "الله يرحم الوالدين", "english": "May God have mercy on your parents (Deep thank you)", "usage": "Deep gratitude"},
+    {"darija": "Lah ychafi", "arabic": "الله يشافي", "english": "May God cure you (Get well soon)", "usage": "Wishing health"},
+    {"darija": "Lah ybarek fik", "arabic": "الله يبارك فيك", "english": "God bless you", "usage": "Blessing"},
+    {"darija": "B sa7a", "arabic": "بصحة", "english": "To your health (said when eating, buying something new, or showering)", "usage": "Cultural blessing"},
+    {"darija": "Lah y3tik sa7a", "arabic": "الله يعطيك الصحة", "english": "May God give you health (Response to B saha)", "usage": "Cultural response"},
+    {"darija": "Tbarkellah 3lik", "arabic": "تبارك الله عليك", "english": "Bless you / Well done", "usage": "Praise"},
+    {"darija": "Ma kayn mochkil", "arabic": "ما كاين مشكل", "english": "There is no problem", "usage": "Reassurance"},
+    {"darija": "3la rasi w l3in", "arabic": "على راسي و العين", "english": "With pleasure", "usage": "Willingness"},
+    {"darija": "Khoud rahtek", "arabic": "خود راحتك", "english": "Take your time / Make yourself at home", "usage": "Hospitality"},
+    {"darija": "Jibli...", "arabic": "جيب لي...", "english": "Bring me...", "usage": "Request"},
+    {"darija": "Sir nichan", "arabic": "سير نيشان", "english": "Go straight", "usage": "Directions"},
+    {"darija": "Dour 3al limen", "arabic": "دور عالليمن", "english": "Turn right", "usage": "Directions"},
+    {"darija": "Dour 3al liser", "arabic": "دور عالليسر", "english": "Turn left", "usage": "Directions"},
+    {"darija": "Wqef hna", "arabic": "وقف هنا", "english": "Stop here", "usage": "Directions"},
+    {"darija": "3tini...", "arabic": "عطيني...", "english": "Give me...", "usage": "Request"},
+    {"darija": "3endak!", "arabic": "عندك!", "english": "Watch out!", "usage": "Warning"},
+    {"darija": "Bchwiya", "arabic": "بشوية", "english": "Slowly / Be careful", "usage": "Caution"},
+    {"darija": "Bezzerba", "arabic": "بالزربة", "english": "Fast / Hurry up", "usage": "Urgency"},
+    {"darija": "Zreb", "arabic": "زرب", "english": "Hurry", "usage": "Urgency"},
+    {"darija": "T3ettelt", "arabic": "تعطلت", "english": "I am late", "usage": "Tardiness"},
+    {"darija": "Tsenna", "arabic": "تسنى", "english": "Wait", "usage": "Waiting"},
+    {"darija": "Tsennani", "arabic": "تسناوني", "english": "Wait for me", "usage": "Waiting"},
+    {"darija": "Ma lqitch", "arabic": "ما لقيتش", "english": "I didn't find it", "usage": "Not finding something"},
+    {"darija": "Ma 3ndich", "arabic": "ما عنديش", "english": "I don't have", "usage": "Lacking"},
+    {"darija": "3ndi", "arabic": "عندي", "english": "I have", "usage": "Possession"},
+    {"darija": "Fiyya jou3", "arabic": "فيا الجوع", "english": "I am hungry", "usage": "Hunger"},
+    {"darija": "Fiyya l3tech", "arabic": "فيا العطش", "english": "I am thirsty", "usage": "Thirst"},
+    {"darija": "Fiyya n3ass", "arabic": "فيا النعاس", "english": "I am sleepy", "usage": "Sleepiness"},
+    {"darija": "Darni rassi", "arabic": "ضرني راسي", "english": "My head hurts", "usage": "Headache"},
+    {"darija": "Khasni", "arabic": "خاصني", "english": "I need", "usage": "Need"},
+    {"darija": "Ma khasni walu", "arabic": "ما خاصني والو", "english": "I don't need anything", "usage": "No need"},
+    {"darija": "Ash ketgoul?", "arabic": "أش كتقول؟", "english": "What are you saying?", "usage": "Disbelief or inquiry"},
+    {"darija": "Blan wa3er", "arabic": "بلان واعر", "english": "Awesome plan", "usage": "Approval"},
+    {"darija": "Nadi", "arabic": "ناضي", "english": "Perfect / Flawless", "usage": "High praise"},
+    {"darija": "Dawi khawi", "arabic": "داوي خاوي", "english": "Empty talk", "usage": "Dismissing nonsense"},
+    {"darija": "Tla3li f rassi", "arabic": "طلع لي ف راسي", "english": "I'm sick of it", "usage": "Frustration"},
+    {"darija": "Mamsalich", "arabic": "مامساليش", "english": "I'm not free / busy", "usage": "Unavailability"},
+    {"darija": "Hani jay", "arabic": "هاني جاي", "english": "I'm coming (male)", "usage": "Arrival announcement"},
+    {"darija": "Hani jaya", "arabic": "هاني جاية", "english": "I'm coming (female)", "usage": "Arrival announcement"}
+  ],
+  "cultural_and_social_tips": [
     "Always greet with 'Salam' when entering a room — it's considered rude not to.",
     "Refusing tea (Atay) when offered is impolite — always accept at least one glass.",
-    "Use your right hand when eating or handing things — the left is considered unclean.",
+    "Use your right hand when eating, handshaking, or handing things — the left is traditionally considered unclean.",
     "Dress modestly when visiting mosques or rural areas out of respect.",
     "Bargaining (negotiating price) in souks is expected and part of the culture.",
-    "Friday is the holy day — many businesses close for midday prayers.",
-    "Hospitality is sacred in Morocco — guests are treated like royalty."
+    "Friday is the holy day — many businesses close for midday prayers, and couscous is the traditional meal.",
+    "Hospitality is sacred in Morocco — guests are treated like royalty.",
+    "When eating from a communal Tagine, only eat from the section directly in front of you.",
+    "Taking off your shoes when entering a Moroccan home with carpets is a common sign of respect.",
+    "Bread (Khobz) is highly respected and should never be thrown in the garbage; it's usually given to animals if leftover.",
+    "Kissing on the cheeks (usually 2 to 4 times) is a standard greeting between people of the same gender who know each other.",
+    "Elders are highly respected; it's common to kiss the hand or head of grandparents or older relatives.",
+    "During Ramadan, eating, drinking, or smoking in public during daylight hours is strictly forbidden."
   ]
 }
